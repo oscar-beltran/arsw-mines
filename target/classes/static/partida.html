@@ -10,6 +10,9 @@ and open the template in the editor.
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <link rel="stylesheet" type="text/css" href="styles.css">
+        <script src="/webjars/jquery/jquery.min.js"></script>
+        <script src="/webjars/sockjs-client/sockjs.min.js"></script>
+        <script src="/webjars/stomp-websocket/stomp.min.js"></script>
         <script src="/app.js"></script>
     </head>
     <body>
@@ -19,6 +22,7 @@ and open the template in the editor.
         <nav>
             <button onclick="salirPartida()">Salir</button>
         </nav> 
+       
 	<section>
             <canvas id="tablero" width="560" height="560"></canvas>
 	</section>

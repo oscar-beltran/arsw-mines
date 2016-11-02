@@ -1,33 +1,11 @@
-var stompClient = null;
+stompClient = null;
+
 
 function salirPartida() {
     //Implementar lógica de desconexión
-    alert("Saliendo");
-    window.location.replace("/index.html");
-    
-};
-
-function dibujaBordeCasillas() {
-    var canvas = $("#tablero");
-    var ctx = canvas.getContext("2d");
-
-    for(i=0;i<8;i++)
-    {for(j=0;j<8;j++)
-    {ctx.moveTo(0,70*j);
-    ctx.lineTo(560,70*j);
-    ctx.stroke();
-
-    ctx.moveTo(70*i,0);
-    ctx.lineTo(70*i,560);
-    ctx.stroke();
-    var left = 0;
-    for(var a=0;a<8;a++) {
-        for(var b=0; b<8;b+=2) {
-          startX = b * 70;
-          if(a%2===0) startX = (b+1) * 70;
-          ctx.fillRect(startX + left,(a*70) ,70,70);
-            }}
-    }}
+    //alert("Saliendo");
+    //window.location.replace("/index.html");
+    drawBoard();
 };
 
 function connect() {
@@ -45,7 +23,6 @@ function connect() {
     });
 }
 
-
 function disconnect() {
     if (stompClient != null) {
         stompClient.disconnect();
@@ -54,11 +31,31 @@ function disconnect() {
     console.log("Disconnected");
 }
 
+function drawBoard(){
+    
+    var canvas = document.getElementById("tablero");
+    var ctx = canvas.getContext('2d');
+    var bw = 560;
+    var bh = 560;
+    var p = 0;
+    
+    
+    for (var x = 0; x <= bw; x += 80) {
+        ctx.moveTo(0.5 + x + p, p);
+        ctx.lineTo(0.5 + x + p, bh + p);
+    }
+
+    for (var x = 0; x <= bh; x += 80) {
+        ctx.moveTo(p, 0.5 + x + p);
+        ctx.lineTo(bw + p, 0.5 + x + p);
+    }
+
+    ctx.strokeStyle = "black";
+    ctx.stroke();
+}
 
 $(document).ready(
     function () {
-        dibujaBordeCasillas();
+        drawBoard();
     }
 );
-
-
