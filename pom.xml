@@ -39,6 +39,7 @@
 			<artifactId>spring-boot-starter-test</artifactId>
 			<scope>test</scope>
 		</dependency>
+<<<<<<< HEAD
                 
                  <dependency>
                     <groupId>org.springframework.boot</groupId>
@@ -71,6 +72,14 @@
                     <version>3.1.0</version>
                 </dependency>        
                 
+=======
+	 <dependency>
+	  <groupId>org.springframework</groupId>
+	  <artifactId>spring-messaging</artifactId>
+	  <version>4.3.3.RELEASE</version>
+	  <type>jar</type>
+	 </dependency>
+>>>>>>> e8f8ea8cdf8cddd8f3cde6b2b3e8451fe3553e50
 	</dependencies>
 
 	<build>
