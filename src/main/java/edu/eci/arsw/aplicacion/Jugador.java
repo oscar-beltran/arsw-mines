@@ -18,7 +18,34 @@ public class Jugador {
     private int vidas;
     
     
-    public Jugador(){
+    public Jugador(String nick, String color){
+        this.nick=nick;
+        this.color=color;
+        this.vidas=3;
+    }
     
+    
+    public String getNick() {
+        return nick;
+    }
+
+    public void setNick(String nick) {
+        this.nick = nick;
+    }
+
+    public String getColor() {
+        return color;
+    }
+
+    public void setColor(String color) {
+        this.color = color;
+    }
+
+    public int getVidas() {
+        return vidas;
+    }
+
+    public void setVidas(int vidas) {
+        this.vidas = vidas;
     }
 }

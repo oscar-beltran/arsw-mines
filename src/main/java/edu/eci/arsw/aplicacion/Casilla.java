@@ -11,8 +11,8 @@ package edu.eci.arsw.aplicacion;
  * @author Sergio Aponte
  */
 public class Casilla {
-    
-    
+
+    private String estado;
     
     
 }

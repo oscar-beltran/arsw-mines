@@ -45,6 +45,16 @@ public class Partida {
     }
     
     /**
+     * Inicializa los otros valores
+     */
+    public void inicializar(){
+        int numCasillas = filas * columnas;
+        minas = numCasillas/3;
+        banderas = minas;
+    }
+    
+    
+    /**
      * Se agrega un nuevo jugador a la partida si no ha excedido el numero maximo
      * @param jugador
      */
@@ -57,6 +67,10 @@ public class Partida {
         return agrega;
     }
     
+    /**
+     * Se envia los jugadores 
+     * @return jugadores
+     */
     public ArrayList<Jugador> getJugadores(){
         return jugadores;
     }
@@ -130,5 +144,61 @@ public class Partida {
 
     public void setId(String id) {
         this.nombre = id;
+    }
+    
+    public String getNombre() {
+        return nombre;
+    }
+
+    public void setNombre(String nombre) {
+        this.nombre = nombre;
+    }
+
+    public String getTipoPartida() {
+        return tipoPartida;
+    }
+
+    public void setTipoPartida(String tipoPartida) {
+        this.tipoPartida = tipoPartida;
+    }
+
+    public int getFilas() {
+        return filas;
+    }
+
+    public void setFilas(int filas) {
+        this.filas = filas;
+    }
+
+    public int getColumnas() {
+        return columnas;
+    }
+
+    public void setColumnas(int columnas) {
+        this.columnas = columnas;
+    }
+
+    public String getModalidad() {
+        return modalidad;
+    }
+
+    public void setModalidad(String modalidad) {
+        this.modalidad = modalidad;
+    }
+
+    public double getTiempo() {
+        return tiempo;
+    }
+
+    public void setTiempo(double tiempo) {
+        this.tiempo = tiempo;
+    }
+
+    public String getNivel() {
+        return nivel;
+    }
+
+    public void setNivel(String nivel) {
+        this.nivel = nivel;
     }
 }
