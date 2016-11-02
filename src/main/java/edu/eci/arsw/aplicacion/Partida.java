@@ -32,6 +32,7 @@ public class Partida {
     private int banderas;
     private int maxJugadores = 10;
     private ArrayList<Jugador> jugadores = new ArrayList<Jugador>();
+    private ArrayList<String> colores = new ArrayList<String>();
     
     public Partida(String nombre,String tipoPartida, Integer filas, Integer columnas, Integer numeroJugadores,String modalidad, double tiempo,String nivel){
        this.nombre=nombre;
@@ -51,9 +52,21 @@ public class Partida {
         int numCasillas = filas * columnas;
         minas = numCasillas/3;
         banderas = minas;
+        llenarColores();
     }
     
-    
+    private void llenarColores(){
+        colores.set(0,"#00FF00");
+        colores.set(1,"#FF00FF");
+        colores.set(2,"#800000");
+        colores.set(3,"#0000CD");
+        colores.set(4,"#9370DB");
+        colores.set(5,"#3CB371");
+        colores.set(6,"	#FFE4B5");
+        colores.set(7,"#808000");
+        colores.set(8,"#FFA500");
+        colores.set(9,"	#FFFF00");
+    }
     /**
      * Se agrega un nuevo jugador a la partida si no ha excedido el numero maximo
      * @param jugador
@@ -61,11 +74,18 @@ public class Partida {
     public boolean setJugador(Jugador jugador){
         boolean agrega = false;
         if(numeroJugadores<maxJugadores){
+            jugador.setColor(colores.get(jugadores.size()));
             jugadores.add(jugador);
             agrega = true;
+            
         }
         return agrega;
     }
+    
+    public void mover(Jugador jugador,Integer posX, Integer posY){
+            
+    }
+    
     
     /**
      * Se envia los jugadores 

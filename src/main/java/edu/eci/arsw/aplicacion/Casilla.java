@@ -13,6 +13,6 @@ package edu.eci.arsw.aplicacion;
 public class Casilla {
 
     private String estado;
-    
+    private String color;
     
 }

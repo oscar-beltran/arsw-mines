@@ -27,20 +27,34 @@ public class Juego {
         partidas.add(partida);
     }
     
-    public void agregarJugador(Jugador jugador,String namePartida){
+    public void realizarMovimiento(Jugador jugador, String namePartida, Integer posX, Integer posY){
+        for(int i=0;i<partidas.size();i++){
+           if(partidas.get(i).getNombre().equals(namePartida)){
+              partidas.get(i).mover(jugador,posX,posY);
+            } 
+        }
+    }
+    
+    /**
+     * Se agrega un jugador a una partida publica
+     * @param jugador
+     * @param namePartida
+     * @return true si este es agregado, false si no
+     */
+    public boolean agregarJugador(Jugador jugador,String namePartida){
         boolean agrego = false;
         for(int i=0;i<partidas.size();i++){
             if(partidas.get(i).getNombre().equals(namePartida)){
               agrego=partidas.get(i).setJugador(jugador);
             }
         }
-        
+        return agrego;
     }
     
     /**
      * Verifica la existencia del nombre de la partida para que esta sea unica
      * @param nombre
-     * @return 
+     * @return tru si el nombre no se encuentra, false si ya esta en la lista de partidas
      */
     public boolean validaNombre(String nombre){
         boolean verifica = false;
