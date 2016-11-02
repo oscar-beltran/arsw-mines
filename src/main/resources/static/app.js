@@ -39,7 +39,6 @@ function drawBoard(){
     var bh = 560;
     var p = 0;
     
-    
     for (var x = 0; x <= bw; x += 80) {
         ctx.moveTo(0.5 + x + p, p);
         ctx.lineTo(0.5 + x + p, bh + p);
@@ -49,6 +48,52 @@ function drawBoard(){
         ctx.moveTo(p, 0.5 + x + p);
         ctx.lineTo(bw + p, 0.5 + x + p);
     }
+    
+    // tamaño del bloque
+    var size = 80;
+    // número de celdas en el canvas
+    var w = ~~ (canvas.width / size);
+    var h = ~~ (canvas.height / size);
+
+    // create empty state array
+    var state = new Array(h);
+    for (var y = 0; y < h; ++y) {
+        state[y] = new Array(w);
+    }
+
+    // click event, using jQuery for cross-browser convenience
+    $(canvas).click(function(e) {
+
+        // quick fill function to save repeating myself later
+        function fill(s, gx, gy) {
+            ctx.fillStyle = s;
+            ctx.fillRect(gx * size, gy * size, size, size);
+        }
+
+        // get mouse click position
+        var mx = e.offsetX;
+        var my = e.offsetY;
+
+        // calculate grid square numbers
+        var gx = ~~ (mx / size);
+        var gy = ~~ (my / size);
+
+        // make sure we're in bounds
+        if (gx < 0 || gx >= w || gy < 0 || gy >= h) {
+            return;
+        }
+
+        if (state[gy][gx]) {
+            // if pressed before, flash red
+            fill('red', gx, gy);
+            setTimeout(function() {
+                fill('black', gx, gy)
+            }, 1000);
+        } else {
+            state[gy][gx] = true;
+            fill('black', gx, gy);
+        }
+    });
 
     ctx.strokeStyle = "black";
     ctx.stroke();
