@@ -5,3 +5,41 @@
 #cuerpo{
     text-align: center;
 }
+
+header {
+    display: block;
+    color: cadetblue;
+    background-color: #1e5f6d;
+    text-align: center;
+    padding-top: 10px;
+    padding-bottom: 10px;
+}
+
+nav {
+    display: block;
+    background-color: #8ff6ff;
+    text-align: center;  
+}
+
+section {
+    background-color: #ededf0;
+    margin-top: 10px;
+    position: fixed;
+}
+
+footer {
+    display: block;
+    color: lightblue;
+    text-align: center;
+    size: 10px;
+    background-color: #1e5f6d;
+    width: 100%;
+    bottom: 0;
+    position: fixed;
+}
+
+canvas {
+  display:block;
+  margin:auto;
+  border:1px dashed black;
+}
