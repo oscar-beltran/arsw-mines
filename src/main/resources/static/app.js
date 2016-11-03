@@ -9,7 +9,7 @@ function salirPartida() {
 };
 
 function connect() {
-    var socket = new SockJS('/stompendpoint');
+    var socket = new SockJS('/stomMines');
     stompClient = Stomp.over(socket);
     stompClient.connect({}, function (frame) {
         
@@ -22,6 +22,15 @@ function connect() {
         
     });
 }
+
+
+//Pruebas de integridad parte logica
+function crearPartida() {
+    alert("Lllegada...");
+    stompClient.send("/app/crearJuego", {}, JSON.stringify({nombre:"Prueba"}));
+    
+}
+
 
 function disconnect() {
     if (stompClient != null) {
@@ -101,6 +110,7 @@ function drawBoard(){
 
 $(document).ready(
     function () {
+        connect();
         drawBoard();
     }
 );

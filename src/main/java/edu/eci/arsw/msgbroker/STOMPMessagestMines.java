@@ -11,6 +11,7 @@ import edu.eci.arsw.aplicacion.Partida;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.messaging.handler.annotation.DestinationVariable;
 import org.springframework.messaging.handler.annotation.MessageMapping;
+import org.springframework.messaging.simp.SimpMessagingTemplate;
 import org.springframework.stereotype.Controller;
 
 /**
@@ -23,6 +24,8 @@ public class STOMPMessagestMines {
     
     @Autowired
     Juego juego;
+    @Autowired
+    SimpMessagingTemplate msgt;
     
     /**
      * Se crea un juego nuevo publico, se recibe una partida
@@ -30,9 +33,9 @@ public class STOMPMessagestMines {
      * @throws Exception 
      */
     @MessageMapping("/crearJuego")    
-    public void crearJuego(Partida partida) throws Exception {
-        System.out.println("creacion de partida: ingresa");
-        juego.crearPartida(partida);
+    public void crearJuego(Datos datos) throws Exception {
+        System.out.println("creacion de partida:"+datos.getNombre());
+        //juego.crearPartida(partida);
     }
     
     /**
