@@ -8,35 +8,58 @@ size = null;
 // número de celdas en el lienzo
 width = null;
 height = null;
-
 p = 0;
+nick = null;
 
-
+//Funciones de redirección
 function salirPartida() {
     //Implementar lógica de desconexión
-    alert("Saliendo...");
+    //alert("Saliendo...");
+    disconnect();
     window.location.replace("/index.html");
 };
 
+// Funciones de conexión
 function connect(partidaId) {
     var socket = new SockJS('/stomMines');
     stompClient = Stomp.over(socket);
     stompClient.connect({}, function (frame) {
         console.log('Connected: ' + frame);
-        
+        crearPartida();
         stompClient.subscribe('/topic/patidaCreada'+partidaId, function (data) {
             var newPartida = JSON.parse(data.body);
-            alert(newPartida.nombre);
-            alert(newPartida.filas);
-            alert(newPartida.columnas);
+            //alert(newPartida.nombre);
+            //alert(newPartida.filas);
+            //alert(newPartida.columnas);
+            canvas = document.getElementById("tablero");
+            ctx = canvas.getContext('2d');
+            size = canvasWidth/newPartida.filas;
+            width = ~~ (canvas.width / size);
+            height = ~~ (canvas.height / size);
+            
+            manejoEventos();
+            drawBoard();
+
+        });
+        
+        stompClient.subscribe('/topic/descubrirCasilla'+partidaId, function (data) {
+            var casilla = JSON.parse(data.body);
+            alert("sdfdsf");
         });
         
     });
 }
 
+function disconnect() {
+    if (stompClient != null) {
+        stompClient.disconnect();
+    }
+    console.log("Disconnected");
+}
+
 //Pruebas de integridad parte logica
 function crearPartida() {
-    stompClient.send("/app/crearJuego", {}, JSON.stringify({nombre:"Prueba",tipoPartida:"Publica",filas:7,columnas:7,numeroJugadores:3,modalidad:"Sencillo",tiempo:10,nivel:"facil",jugador:"Deivan"}));
+    stompClient.send("/app/crearJuego", {}, JSON.stringify({nombre:"Prueba",tipoPartida:"Publica",filas:8,columnas:8,numeroJugadores:3,modalidad:"Sencillo",tiempo:10,nivel:"facil",jugador:"Deivan"}));
     
 }
 
@@ -55,28 +78,19 @@ function agregarJugador() {
     );
 }
 
-//Prueba de agregar movimienro a una partida
-function descubrirCasilla() {
-      stompClient.send("/app/descubrirCasilla", {}, JSON.stringify({nombre:"Prueba",tipoPartida:"Publica",filas:7,columnas:7,numeroJugadores:3,modalidad:"Sencillo",tiempo:10,nivel:"facil",jugador:"Deivan"}));
-}
-
-
-function disconnect() {
-    if (stompClient != null) {
-        stompClient.disconnect();
-    }
-    setConnected(false);
-    console.log("Disconnected");
+//Prueba de agregar movimiento a una partida
+function descubrirCasilla(posX, posY) {
+      stompClient.send("/app/descubrirCasilla", {}, JSON.stringify({nombre:"Test",jugador:"Deivan",cooX:posX,cooY:posY}));
 }
 
 // Dibuja las líneas de la grilla sobre el canvas
 function drawBoard(){
     
-    for (var x = 0; x <= canvasWidth; x += 80) {
+    for (var x = 0; x <= canvasWidth; x += size) {
         ctx.moveTo(0.5 + x + p, p);
         ctx.lineTo(0.5 + x + p, canvasHeight + p);
     }
-    for (var x = 0; x <= canvasHeight; x += 80) {
+    for (var x = 0; x <= canvasHeight; x += size) {
         ctx.moveTo(p, 0.5 + x + p);
         ctx.lineTo(canvasWidth + p, 0.5 + x + p);
     }
@@ -98,6 +112,7 @@ function manejoEventos(){
         
         switch (event.which) {
             case 1:
+                descubrirCasilla(gx,gy)                
                 fill('black', gx, gy);
                 fillText('1','red', gx, gy);
                 break;
@@ -127,12 +142,15 @@ function fillText(numero, color, gx, gy){
 $(document).ready(
     function () {
         connect("Prueba");
-        canvas = document.getElementById("tablero");
-        ctx = canvas.getContext('2d');
-        width = ~~ (canvas.width / size);
-        height = ~~ (canvas.height / size);
-        size = 80;
-        manejoEventos();
-        drawBoard();
     }
 );
+
+function descrearCampo() {
+    window.location.replace("/Crearcampo.html");
+};
+function desCampoprivado() {
+    window.location.replace("/Campoprivado.html");
+};
+function desCampopublico() {
+    window.location.replace("/Campopublico.html");
+};
