@@ -80,7 +80,7 @@ function agregarJugador() {
 
 //Prueba de agregar movimiento a una partida
 function descubrirCasilla(posX, posY) {
-      stompClient.send("/app/descubrirCasilla", {}, JSON.stringify({nombre:"Test",jugador:"Deivan",cooX:posX,cooY:posY}));
+      stompClient.send("/app/descubrirCasilla", {}, JSON.stringify({nombre:"Prueba",jugador:"Deivan",posX:posX,posY:posY}));
 }
 
 // Dibuja las líneas de la grilla sobre el canvas
