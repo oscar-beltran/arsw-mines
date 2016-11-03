@@ -81,6 +81,9 @@ public class Tablero {
         while (cont <= minas);
         }
     
+    /**
+     * Asigna algoritmo de numeros al tablero
+     */
     public void asignarNumeros() {
         int cont;
         for(int i=0;i<columnas;i++){
@@ -121,11 +124,26 @@ public class Tablero {
         }  
         imprimirCasillas();
     }
-    
+    /**
+     * Verifica el estado de casillas para no salir de los limites
+     * @param i
+     * @param j
+     * @return 
+     */
     private boolean verifica(Integer i, Integer j){
             return (i>=0 && j>=0 && i<filas && j < columnas);
     }
-        
+       
+    
+    public Casilla getCasilla(String color, Integer posX, Integer posY){
+        Casilla casilla = null;
+        if(!casillas[posX][posY].isActiva()){
+           casillas[posX][posY].setActiva(true);
+           casillas[posX][posY].setColor(color);
+           casilla = casillas[posX][posY];
+        }     
+        return casilla;
+    }
 }
     
    

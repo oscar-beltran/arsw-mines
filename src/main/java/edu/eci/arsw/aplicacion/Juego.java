@@ -6,6 +6,7 @@
 package edu.eci.arsw.aplicacion;
 
 import edu.eci.arsw.msgbroker.Datos;
+import edu.eci.arsw.msgbroker.DatosSeleccion;
 import java.util.ArrayList;
 import org.springframework.stereotype.Service;
 
@@ -31,12 +32,15 @@ public class Juego {
         return estado;
     }
     
-    public void realizarMovimiento(Jugador jugador, String namePartida, Integer posX, Integer posY){
+    
+    public Casilla realizarMovimiento(DatosSeleccion datos){
+        Casilla casilla=null;
         for(int i=0;i<partidas.size();i++){
-           if(partidas.get(i).getNombre().equals(namePartida)){
-              partidas.get(i).mover(jugador,posX,posY);
+           if(partidas.get(i).getNombre().equals(datos.getNombre())){
+              casilla = partidas.get(i).mover(datos.getJugador(),datos.getPosX(),datos.getPosY());
             } 
         }
+        return casilla;
     }
     
     /**

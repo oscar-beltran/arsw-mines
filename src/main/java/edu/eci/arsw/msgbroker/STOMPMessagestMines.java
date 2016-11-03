@@ -5,6 +5,7 @@
  */
 package edu.eci.arsw.msgbroker;
 
+import edu.eci.arsw.aplicacion.Casilla;
 import edu.eci.arsw.aplicacion.Juego;
 import edu.eci.arsw.aplicacion.Jugador;
 import edu.eci.arsw.aplicacion.Partida;
@@ -39,9 +40,9 @@ public class STOMPMessagestMines {
     }
     
     @MessageMapping("/descubrirCasilla")    
-    public void descubrirCasilla(Datos datos) throws Exception {
-        datos.setEstado(juego.crearPartida(datos));
-        msgt.convertAndSend("/topic/patidaCreada",datos);
+    public void descubrirCasilla(DatosSeleccion datos) throws Exception {
+        Casilla casilla = juego.realizarMovimiento(datos);
+        msgt.convertAndSend("/topic/casillaSeleccionada"+datos.getNombre(),casilla);
     }
     
       

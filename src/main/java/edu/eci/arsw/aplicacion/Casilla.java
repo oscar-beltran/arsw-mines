@@ -18,6 +18,7 @@ public class Casilla {
     private int posX;
     private int posY;
     private boolean activa;
+
     
     /**
      * Se agregan estados a la casilla
@@ -78,4 +79,11 @@ public class Casilla {
         this.color = color;
     }
     
+    public boolean isActiva() {
+        return activa;
+    }
+
+    public void setActiva(boolean activa) {
+        this.activa = activa;
+    }
 }

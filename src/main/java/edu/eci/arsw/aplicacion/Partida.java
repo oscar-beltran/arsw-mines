@@ -98,8 +98,16 @@ public class Partida {
     
     
     
-    public void mover(Jugador jugador,Integer posX, Integer posY){
-            
+    public Casilla mover(String jugador,Integer posX, Integer posY){
+            String color="";
+            Casilla casilla = null;
+            for(int i=0;i<jugadores.size();i++){
+                if(jugadores.get(i).equals(jugador)){
+                    color=jugadores.get(i).getColor();
+                    casilla = tablero.getCasilla(color,posX,posY);
+                }
+            } 
+            return casilla;
     }
     
     
