@@ -35,7 +35,14 @@ public class STOMPMessagestMines {
     @MessageMapping("/crearJuego")    
     public void crearJuego(Datos datos) throws Exception {
         datos.setEstado(juego.crearPartida(datos));
+        msgt.convertAndSend("/topic/patidaCreada"+datos.getNombre(),datos);
+    }
+    
+    @MessageMapping("/descubrirCasilla")    
+    public void descubrirCasilla(Datos datos) throws Exception {
+        datos.setEstado(juego.crearPartida(datos));
         msgt.convertAndSend("/topic/patidaCreada",datos);
     }
+    
       
 }

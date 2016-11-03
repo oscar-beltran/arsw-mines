@@ -18,14 +18,17 @@ function salirPartida() {
     window.location.replace("/index.html");
 };
 
-function connect() {
+function connect(partidaId) {
     var socket = new SockJS('/stomMines');
     stompClient = Stomp.over(socket);
     stompClient.connect({}, function (frame) {
         console.log('Connected: ' + frame);
-        stompClient.subscribe('/topic/patidaCreada', function (data) {
+        
+        stompClient.subscribe('/topic/patidaCreada'+partidaId, function (data) {
             var newPartida = JSON.parse(data.body);
             alert(newPartida.nombre);
+            alert(newPartida.filas);
+            alert(newPartida.columnas);
         });
         
     });
@@ -54,17 +57,7 @@ function agregarJugador() {
 
 //Prueba de agregar movimienro a una partida
 function descubrirCasilla() {
-    console.log("/juntosContraLasMinas/descubrirCasilla/"+"Prueba"); 
-    $.get( "/juntosContraLasMinas/descubrirCasilla/"+"Prueba2"+"/"+"Anderson"+"/"+5+"/"+5, 
-        function( data ) {      
-                alert(data);
-        }    
-    ).fail(
-        function(data){
-            alert("Problema");
-        }
-            
-    );
+      stompClient.send("/app/descubrirCasilla", {}, JSON.stringify({nombre:"Prueba",tipoPartida:"Publica",filas:7,columnas:7,numeroJugadores:3,modalidad:"Sencillo",tiempo:10,nivel:"facil",jugador:"Deivan"}));
 }
 
 
@@ -133,7 +126,7 @@ function fillText(numero, color, gx, gy){
 
 $(document).ready(
     function () {
-        connect();
+        connect("Prueba");
         canvas = document.getElementById("tablero");
         ctx = canvas.getContext('2d');
         width = ~~ (canvas.width / size);
