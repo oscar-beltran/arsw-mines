@@ -24,7 +24,10 @@ nav {
 section {
     background-color: #ededf0;
     margin-top: 10px;
-    position: fixed;
+    position: relative;
+    margin-left: 35em;
+    margin-right: 35em;
+    height: 300px;
 }
 
 footer {
@@ -43,9 +46,4 @@ canvas {
   margin:auto;
   border:1px dashed black;
 }
-
-
-
-
-
 
