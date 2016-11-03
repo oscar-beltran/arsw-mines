@@ -34,13 +34,11 @@ public class STOMPMessagestMines {
      */
     @MessageMapping("/crearJuego")    
     public void crearJuego(Datos datos) throws Exception {
-        System.out.println("creacion de partida:"+datos.getNombre());
         juego.crearPartida(datos);
     }
       
     @MessageMapping("/descubrirCasilla/{partidaId}/{posX}/{posY}")    
     public void descubrirCasilla(Jugador jugador,@DestinationVariable String partidaId,@DestinationVariable Integer posX, @DestinationVariable Integer posY) throws Exception {
-        System.out.println("jugador:" + jugador.getNick()+"realizo movimiento:"+posX+","+posY);
         juego.realizarMovimiento(jugador, partidaId, posX, posY);
     }
 }

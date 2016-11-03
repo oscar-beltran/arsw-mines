@@ -25,11 +25,9 @@ public class Juego {
      */
     public void crearPartida(Datos datos){
         Partida partida = datos.getNuevaPartida();
-        System.out.println("Partida creada:"+partida.getNombre());
         partida.inicializar();
         boolean estado = partida.setJugador(datos.getJugador());
         partidas.add(partida);
-        System.out.println("Numero partidas:"+partidas.size());
         
     }
     
@@ -50,6 +48,7 @@ public class Juego {
     public boolean agregarJugador(String nick,String namePartida){
         boolean agrego = false;
         for(int i=0;i<partidas.size();i++){
+            System.out.println(partidas.get(i).getNombre()+","+namePartida);
             if(partidas.get(i).getNombre().equals(namePartida)){
               agrego=partidas.get(i).setJugador(nick);
             }
