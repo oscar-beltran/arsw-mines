@@ -34,4 +34,10 @@ public class MinesResourceController {
         return new ResponseEntity<>(estado,HttpStatus.ACCEPTED);
     }
     
+    @RequestMapping(path = "/descubrirCasilla/{partidaId}/{nick}/{posX}/{posY}", method = RequestMethod.GET)
+    public ResponseEntity<?> descubrirCasilla(@PathVariable String partidaId,@PathVariable String nick,@PathVariable Integer posX,@PathVariable Integer posY){
+        System.out.println("Posicion en x:"+posX+", Posicion en y:"+posY);
+        return new ResponseEntity<>(HttpStatus.ACCEPTED);
+    }
+    
 }

@@ -37,8 +37,4 @@ public class STOMPMessagestMines {
         juego.crearPartida(datos);
     }
       
-    @MessageMapping("/descubrirCasilla/{partidaId}/{posX}/{posY}")    
-    public void descubrirCasilla(Jugador jugador,@DestinationVariable String partidaId,@DestinationVariable Integer posX, @DestinationVariable Integer posY) throws Exception {
-        juego.realizarMovimiento(jugador, partidaId, posX, posY);
-    }
 }

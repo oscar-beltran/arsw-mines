@@ -17,13 +17,15 @@ public class Casilla {
     private int numero;
     private int posX;
     private int posY;
+    private boolean activa;
     
     /**
      * Se agregan estados a la casilla
      * @param estado V= vacio, B = bomba  
      */
     public Casilla(String estado){
-        this.estado=estado;    
+        this.estado=estado; 
+        this.activa=false;
     }
 
     /**

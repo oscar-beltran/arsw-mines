@@ -32,7 +32,6 @@ function connect() {
         
     });
 }
-http://arsw-mines.herokuapp.com/
 
 //Pruebas de integridad parte logica
 function crearPartida() {
@@ -54,6 +53,22 @@ function agregarJugador() {
             
     );
 }
+
+//Prueba de agregar movimienro a una partida
+function descubrirCasilla() {
+    console.log("/juntosContraLasMinas/descubrirCasilla/"+"Prueba"); 
+    $.get( "/juntosContraLasMinas/descubrirCasilla/"+"Prueba2"+"/"+"Anderson"+"/"+5+"/"+5, 
+        function( data ) {      
+                alert(data);
+        }    
+    ).fail(
+        function(data){
+            alert("Problema");
+        }
+            
+    );
+}
+
 
 function disconnect() {
     if (stompClient != null) {
@@ -120,13 +135,12 @@ function fillText(numero, color, gx, gy){
 
 $(document).ready(
     function () {
-        
+        connect();
         canvas = document.getElementById("tablero");
         ctx = canvas.getContext('2d');
         width = ~~ (canvas.width / size);
         height = ~~ (canvas.height / size);
         size = 80;
-        connect();
         manejoEventos();
         drawBoard();
     }
