@@ -116,3 +116,10 @@ $(document).ready(
         drawBoard();
     }
 );
+
+
+
+
+
+
+//Aqui empiece a realizar conexiones..
