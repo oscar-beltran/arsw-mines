@@ -29,28 +29,15 @@ public class STOMPMessagestMines {
     
     /**
      * Se crea un juego nuevo publico, se recibe una partida
-     * @param partida
+     * @param datos
      * @throws Exception 
      */
     @MessageMapping("/crearJuego")    
     public void crearJuego(Datos datos) throws Exception {
         System.out.println("creacion de partida:"+datos.getNombre());
-        //juego.crearPartida(partida);
+        juego.crearPartida(datos);
     }
-    
-    /**
-     * El estado muestra si el jugador sido agregado
-     * @param jugador
-     * @param partidaId
-     * @throws Exception 
-     */
-    @MessageMapping("/agregarJugador/{partidaId}")    
-    public void crearJuego(Jugador jugador,@DestinationVariable  String partidaId) throws Exception {
-        boolean estado;
-        System.out.println("creacion de jugador:" + jugador.getNick());
-        estado=juego.agregarJugador(jugador, partidaId);
-    }
-    
+      
     @MessageMapping("/descubrirCasilla/{partidaId}/{posX}/{posY}")    
     public void descubrirCasilla(Jugador jugador,@DestinationVariable String partidaId,@DestinationVariable Integer posX, @DestinationVariable Integer posY) throws Exception {
         System.out.println("jugador:" + jugador.getNick()+"realizo movimiento:"+posX+","+posY);

@@ -5,6 +5,7 @@
  */
 package edu.eci.arsw.aplicacion;
 
+import edu.eci.arsw.msgbroker.Datos;
 import java.util.ArrayList;
 import org.springframework.stereotype.Service;
 
@@ -19,12 +20,17 @@ public class Juego {
     private ArrayList<Partida> partidas = new ArrayList<Partida>();
     
     /**
-     * Se crea he inicializa una nueva partida
-     * @param partida 
+     * Se reciben los datos de creacion de nueva partida
+     * @param datos suministrados por el usuario
      */
-    public void crearPartida(Partida partida){
+    public void crearPartida(Datos datos){
+        Partida partida = datos.getNuevaPartida();
+        System.out.println("Partida creada:"+partida.getNombre());
         partida.inicializar();
+        boolean estado = partida.setJugador(datos.getJugador());
         partidas.add(partida);
+        System.out.println("Numero partidas:"+partidas.size());
+        
     }
     
     public void realizarMovimiento(Jugador jugador, String namePartida, Integer posX, Integer posY){
@@ -37,15 +43,15 @@ public class Juego {
     
     /**
      * Se agrega un jugador a una partida publica
-     * @param jugador
+     * @param nick
      * @param namePartida
      * @return true si este es agregado, false si no
      */
-    public boolean agregarJugador(Jugador jugador,String namePartida){
+    public boolean agregarJugador(String nick,String namePartida){
         boolean agrego = false;
         for(int i=0;i<partidas.size();i++){
             if(partidas.get(i).getNombre().equals(namePartida)){
-              agrego=partidas.get(i).setJugador(jugador);
+              agrego=partidas.get(i).setJugador(nick);
             }
         }
         return agrego;

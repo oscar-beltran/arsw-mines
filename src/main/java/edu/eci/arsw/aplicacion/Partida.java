@@ -51,33 +51,36 @@ public class Partida {
     public void inicializar(){
         int numCasillas = filas * columnas;
         minas = numCasillas/3;
+        System.out.println("Calculando minas:"+minas);
         banderas = minas;
+        System.out.println("Calculando banderas:"+banderas);
         llenarColores();
     }
     
     private void llenarColores(){
-        colores.set(0,"#00FF00");
-        colores.set(1,"#FF00FF");
-        colores.set(2,"#800000");
-        colores.set(3,"#0000CD");
-        colores.set(4,"#9370DB");
-        colores.set(5,"#3CB371");
-        colores.set(6,"	#FFE4B5");
-        colores.set(7,"#808000");
-        colores.set(8,"#FFA500");
-        colores.set(9,"	#FFFF00");
+        colores.add("#00FF00");
+        colores.add("#FF00FF");
+        colores.add("#800000");
+        colores.add("#0000CD");
+        colores.add("#9370DB");
+        colores.add("#3CB371");
+        colores.add("#FFE4B5");
+        colores.add("#808000");
+        colores.add("#FFA500");
+        colores.add("#FFFF00");
+        System.out.println("Llenado colores:");
     }
     /**
      * Se agrega un nuevo jugador a la partida si no ha excedido el numero maximo
      * @param jugador
      */
-    public boolean setJugador(Jugador jugador){
+    public boolean setJugador(String nick){
         boolean agrega = false;
         if(numeroJugadores<maxJugadores){
-            jugador.setColor(colores.get(jugadores.size()));
+            Jugador jugador = new Jugador(nick,colores.get(jugadores.size()));
             jugadores.add(jugador);
             agrega = true;
-            
+            System.out.println("Jugador :"+jugador.getNick()+" Agregado, Color:"+jugador.getColor());
         }
         return agrega;
     }

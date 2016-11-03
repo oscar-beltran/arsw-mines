@@ -26,9 +26,12 @@ public class MinesResourceController {
     @Autowired
     Juego juego;
     
-    @RequestMapping(path = "/crearJuego/{patidaId}", method = RequestMethod.GET)
-    public ResponseEntity<?> getCrearPartida(@PathVariable String partidaId){
-        return new ResponseEntity<>(HttpStatus.ACCEPTED);
+    @RequestMapping(path = "/agregarJugador/{partidaId}/{nick}", method = RequestMethod.GET)
+    public ResponseEntity<?> getCurrentWord(@PathVariable String partidaId,@PathVariable String nick){
+        System.out.println("Partida:"+partidaId+", Jugador:"+nick);
+        boolean estado;
+        estado=juego.agregarJugador(nick,partidaId);
+        return new ResponseEntity<>(estado,HttpStatus.ACCEPTED);
     }
     
 }
