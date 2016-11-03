@@ -17,7 +17,7 @@ public class DatosSeleccion {
     private int posX;
     private int posY;
     
-    public DatosSeleccion(String nombre, String jugador, int posX, int posY) {
+    public void DatosSeleccion(String nombre, String jugador, int posX, int posY) {
         this.nombre = nombre;
         this.jugador = jugador;
         this.posX = posX;

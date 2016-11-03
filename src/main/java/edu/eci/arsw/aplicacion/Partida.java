@@ -102,7 +102,7 @@ public class Partida {
             String color="";
             Casilla casilla = null;
             for(int i=0;i<jugadores.size();i++){
-                if(jugadores.get(i).equals(jugador)){
+                if(jugadores.get(i).getNick().equals(jugador)){
                     color=jugadores.get(i).getColor();
                     casilla = tablero.getCasilla(color,posX,posY);
                 }

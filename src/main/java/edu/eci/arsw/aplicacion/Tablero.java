@@ -45,6 +45,7 @@ public class Tablero {
         for(int i=0;i<columnas;i++){
             for(int j=0;j<filas;j++){
                 casillas[i][j]=new Casilla("V");
+                casillas[i][j].setPosicion(i, j);
             }
         }
     } 
@@ -111,10 +112,7 @@ public class Tablero {
                     }
                     if(verifica(i+1,j-1)){
                         if(casillas[i+1][j-1].getEstado().equals("B"))cont++;
-                    }
-                    if(verifica(i+1,j-1)){
-                        if(casillas[i+1][j-1].getEstado().equals("B"))cont++;
-                    }
+                    }                    
                     if(verifica(i+1,j+1)){
                         if(casillas[i+1][j+1].getEstado().equals("B"))cont++;
                     }
