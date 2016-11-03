@@ -47,10 +47,11 @@ public class Tablero {
                 casillas[i][j]=new Casilla("V");
             }
         }
-        imprimirCasillas();
-        agregarMinas();
     } 
     
+    /**
+     * Imprime casillas para verificacion
+     */
     public void imprimirCasillas(){
         for(int i=0;i<columnas;i++){
             for(int j=0;j<filas;j++){
@@ -60,6 +61,9 @@ public class Tablero {
         }    
     }
     
+    /**
+     * Agrega minas a un nuevo tablero
+     */
     public void agregarMinas(){
         int i=0;
         int j=0;
@@ -75,8 +79,52 @@ public class Tablero {
             }                   
         }
         while (cont <= minas);
-        imprimirCasillas();
         }
+    
+    public void asignarNumeros() {
+        int cont;
+        for(int i=0;i<columnas;i++){
+            for(int j=0;j<filas;j++){
+                cont =0;
+                if(casillas[i][j].getEstado().equals("V")){
+                    
+                    if(verifica(i-1,j)){
+                        if(casillas[i-1][j].getEstado().equals("B"))cont++;
+                    }
+                    if(verifica(i+1,j)){
+                        if(casillas[i+1][j].getEstado().equals("B"))cont++;
+                    }
+                    if(verifica(i,j-1)){
+                        if(casillas[i][j-1].getEstado().equals("B"))cont++;
+                    }
+                    if(verifica(i,j+1)){
+                        if(casillas[i][j+1].getEstado().equals("B"))cont++;
+                    }
+                    if(verifica(i-1,j-1)){
+                        if(casillas[i-1][j-1].getEstado().equals("B"))cont++;
+                    }
+                    if(verifica(i-1,j+1)){
+                        if(casillas[i-1][j+1].getEstado().equals("B"))cont++;
+                    }
+                    if(verifica(i+1,j-1)){
+                        if(casillas[i+1][j-1].getEstado().equals("B"))cont++;
+                    }
+                    if(verifica(i+1,j-1)){
+                        if(casillas[i+1][j-1].getEstado().equals("B"))cont++;
+                    }
+                    if(verifica(i+1,j+1)){
+                        if(casillas[i+1][j+1].getEstado().equals("B"))cont++;
+                    }
+                    if(cont != 0)casillas[i][j].setEstado(""+cont);
+                }
+            }
+        }  
+        imprimirCasillas();
+    }
+    
+    private boolean verifica(Integer i, Integer j){
+            return (i>=0 && j>=0 && i<filas && j < columnas);
+    }
         
 }
     

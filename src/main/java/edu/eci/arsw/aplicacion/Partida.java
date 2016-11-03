@@ -86,12 +86,17 @@ public class Partida {
         return agrega;
     }
     
-    
+    /**
+     * Se realiza el poblado de un nuevo tablero
+     */
     public void poblartablero(){
         tablero = new Tablero(filas, columnas, nivel, minas);
         tablero.llenarTablero();
-        
+        tablero.agregarMinas();
+        tablero.asignarNumeros();
     }
+    
+    
     
     public void mover(Jugador jugador,Integer posX, Integer posY){
             
