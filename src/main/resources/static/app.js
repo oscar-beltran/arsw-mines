@@ -3,9 +3,8 @@ stompClient = null;
 
 function salirPartida() {
     //Implementar lógica de desconexión
-    //alert("Saliendo");
-    //window.location.replace("/index.html");
-    drawBoard();
+    alert("Saliendo...");
+    window.location.replace("/index.html");
 };
 
 function connect() {
@@ -35,33 +34,33 @@ function drawBoard(){
     
     var canvas = document.getElementById("tablero");
     var ctx = canvas.getContext('2d');
-    var bw = 560;
-    var bh = 560;
+    var canvasWidth = 560;
+    var canvasHeight = 560;
     var p = 0;
     
-    for (var x = 0; x <= bw; x += 80) {
+    for (var x = 0; x <= canvasWidth; x += 80) {
         ctx.moveTo(0.5 + x + p, p);
-        ctx.lineTo(0.5 + x + p, bh + p);
+        ctx.lineTo(0.5 + x + p, canvasHeight + p);
     }
 
-    for (var x = 0; x <= bh; x += 80) {
+    for (var x = 0; x <= canvasHeight; x += 80) {
         ctx.moveTo(p, 0.5 + x + p);
-        ctx.lineTo(bw + p, 0.5 + x + p);
+        ctx.lineTo(canvasWidth + p, 0.5 + x + p);
     }
     
     // tamaño del bloque
     var size = 80;
-    // número de celdas en el canvas
-    var w = ~~ (canvas.width / size);
-    var h = ~~ (canvas.height / size);
+    // número de celdas en el lienzo
+    var width = ~~ (canvas.width / size);
+    var height = ~~ (canvas.height / size);
 
-    // create empty state array
-    var state = new Array(h);
-    for (var y = 0; y < h; ++y) {
-        state[y] = new Array(w);
+    // crear arreglo vacío de estados
+    var state = new Array(height);
+    for (var y = 0; y < height; ++y) {
+        state[y] = new Array(width);
     }
 
-    // click event, using jQuery for cross-browser convenience
+    // manejo de eventos de clic en el mouse
     $(canvas).click(function(e) {
 
         // quick fill function to save repeating myself later
@@ -70,21 +69,24 @@ function drawBoard(){
             ctx.fillRect(gx * size, gy * size, size, size);
         }
 
-        // get mouse click position
-        var mx = e.offsetX;
-        var my = e.offsetY;
+        // posición del mouse
+        var mouseX = e.offsetX;
+        var mouseY = e.offsetY;
+        
+        //alert("X:"+mouseX+" Y:"+mouseY);
+           
+        // calcula la ubicación de la casilla
+        var gx = ~~ (mouseX / size);
+        var gy = ~~ (mouseY / size);
+        // alert("X:"+gx+" Y:"+gy);
 
-        // calculate grid square numbers
-        var gx = ~~ (mx / size);
-        var gy = ~~ (my / size);
-
-        // make sure we're in bounds
-        if (gx < 0 || gx >= w || gy < 0 || gy >= h) {
+        // verifica que se esté dentro de los bordes
+        if (gx < 0 || gx >= width || gy < 0 || gy >= height) {
             return;
         }
 
         if (state[gy][gx]) {
-            // if pressed before, flash red
+            // de presionarse previamente, se torna teporalmente rojo
             fill('red', gx, gy);
             setTimeout(function() {
                 fill('black', gx, gy)
