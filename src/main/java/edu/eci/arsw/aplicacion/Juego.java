@@ -23,12 +23,12 @@ public class Juego {
      * Se reciben los datos de creacion de nueva partida
      * @param datos suministrados por el usuario
      */
-    public void crearPartida(Datos datos){
+    public boolean crearPartida(Datos datos){
         Partida partida = datos.getNuevaPartida();
         partida.inicializar();
         boolean estado = partida.setJugador(datos.getJugador());
         partidas.add(partida);
-        
+        return estado;
     }
     
     public void realizarMovimiento(Jugador jugador, String namePartida, Integer posX, Integer posY){

@@ -24,6 +24,7 @@ public class Datos {
     private double tiempo;
     private String nivel;
     private String jugador;
+    private boolean estado;
     
     public void Datos(String nombre,String tipoPartida,Integer filas, Integer columnas,Integer numeroJugadores,String modalidad, double tiempo,String nivel,String jugador){
        this.nombre=nombre;
@@ -117,5 +118,13 @@ public class Datos {
 
     public void setJugador(String jugador) {
         this.jugador = jugador;
+    }
+    
+    public boolean isEstado() {
+        return estado;
+    }
+
+    public void setEstado(boolean estado) {
+        this.estado = estado;
     }
 }

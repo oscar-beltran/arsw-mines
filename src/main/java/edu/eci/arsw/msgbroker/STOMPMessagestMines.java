@@ -34,7 +34,8 @@ public class STOMPMessagestMines {
      */
     @MessageMapping("/crearJuego")    
     public void crearJuego(Datos datos) throws Exception {
-        juego.crearPartida(datos);
+        datos.setEstado(juego.crearPartida(datos));
+        msgt.convertAndSend("/topic/patidaCreada",datos);
     }
       
 }

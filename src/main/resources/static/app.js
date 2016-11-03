@@ -22,13 +22,11 @@ function connect() {
     var socket = new SockJS('/stomMines');
     stompClient = Stomp.over(socket);
     stompClient.connect({}, function (frame) {
-        
         console.log('Connected: ' + frame);
-        
-        /*stompClient.subscribe('/topic/XXXXTOPIC', function () {
-            //subscriber action
-            
-        });*/
+        stompClient.subscribe('/topic/patidaCreada', function (data) {
+            var newPartida = JSON.parse(data.body);
+            alert(newPartida.nombre);
+        });
         
     });
 }
