@@ -25,9 +25,23 @@ function connect() {
 
 //Pruebas de integridad parte logica
 function crearPartida() {
-    alert("Lllegada...");
-    stompClient.send("/app/crearJuego", {}, JSON.stringify({nombre:"Prueba"}));
+    stompClient.send("/app/crearJuego", {}, JSON.stringify({nombre:"Prueba",tipoPartida:"Publica",filas:7,columnas:7,numeroJugadores:3,modalidad:"Sencillo",tiempo:10,nivel:"facil",jugador:"Deivan"}));
     
+}
+
+//Prueba de agregar jugadores, "Prueba" es el identificador de la partida
+function agregarJugador() {
+    console.log("/juntosContraLasMinas/agregarJugador/"+"Prueba"); 
+    $.get( "/juntosContraLasMinas/agregarJugador/"+"Prueba"+"/"+"Anderson", 
+        function( data ) {      
+                alert(data);
+        }    
+    ).fail(
+        function(data){
+            alert("Problema");
+        }
+            
+    );
 }
 
 
