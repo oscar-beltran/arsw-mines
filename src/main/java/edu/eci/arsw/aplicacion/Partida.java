@@ -51,12 +51,14 @@ public class Partida {
     public void inicializar(){
         int numCasillas = filas * columnas;
         minas = numCasillas/3;
-        System.out.println("Calculando minas:"+minas);
         banderas = minas;
-        System.out.println("Calculando banderas:"+banderas);
         llenarColores();
+        poblartablero();
     }
     
+    /**
+     * Se agregan colores para cada uno de los nuevos jugadores
+     */
     private void llenarColores(){
         colores.add("#00FF00");
         colores.add("#FF00FF");
@@ -68,7 +70,6 @@ public class Partida {
         colores.add("#808000");
         colores.add("#FFA500");
         colores.add("#FFFF00");
-        System.out.println("Llenado colores:");
     }
     /**
      * Se agrega un nuevo jugador a la partida si no ha excedido el numero maximo
@@ -83,6 +84,13 @@ public class Partida {
             System.out.println("Jugador :"+jugador.getNick()+" Agregado, Color:"+jugador.getColor());
         }
         return agrega;
+    }
+    
+    
+    public void poblartablero(){
+        tablero = new Tablero(filas, columnas, nivel, minas);
+        tablero.llenarTablero();
+        
     }
     
     public void mover(Jugador jugador,Integer posX, Integer posY){

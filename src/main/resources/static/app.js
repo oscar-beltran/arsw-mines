@@ -32,7 +32,7 @@ function crearPartida() {
 //Prueba de agregar jugadores, "Prueba" es el identificador de la partida
 function agregarJugador() {
     console.log("/juntosContraLasMinas/agregarJugador/"+"Prueba"); 
-    $.get( "/juntosContraLasMinas/agregarJugador/"+"Prueba"+"/"+"Anderson", 
+    $.get( "/juntosContraLasMinas/agregarJugador/"+"Prueba2"+"/"+"Anderson", 
         function( data ) {      
                 alert(data);
         }    
