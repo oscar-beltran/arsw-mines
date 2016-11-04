@@ -35,7 +35,33 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 	<section>
             
                 <div id="central">
-                    
+                    <form action="http://algunsitio.com/prog/usuarionuevo" method="post">
+                        <p>
+                            <br>
+                            <label for="nombre">Nombre de partida: </label>
+                                      <input type="text" id="nombre"><br><br>
+                            <label for="tipa">Tipo de partida: </label>
+                            <input type="radio" name="tipo de partida" value="Partida publica"> Partida publica
+                            <input type="radio" name="tipo de partida" value="Partida privada"> Partida privada<br><br>
+                            <label for="tamano_del_tablero">Tamaño del tablero: </label>
+                                      <input type="text" id="tama"><br><br>
+                            
+                            
+                            <label for="numero_de_jugadores">Numero de jugadores: </label>
+                                      <input type="text" id="numer"><br><br>
+                                      
+                            <label for="tipa">Modalidad de juego: </label>
+                            <input type="radio" name="mod de partida" value="normal"> Normal
+                            <input type="radio" name="mod de partida" value="contrareloj"> Contrareloj
+                            <input type="radio" name="mod de partida" value="normal"> Limpieza<br><br>
+                            
+                            <label for="tie">Nivel de juego: </label>
+                            <input type="radio" name="niv de game" value="fac"> Facil
+                            <input type="radio" name="niv de game" value="med"> Medio
+                            <input type="radio" name="niv de game" value="dificil"> Dificil<br><br>
+                            <input type="submit" value="Enviar"> <INPUT type="reset">
+                        </p>
+                    </form>
                 </div>   
             
 	</section>
