@@ -10,6 +10,10 @@ width = null;
 height = null;
 p = 0;
 nick = null;
+mouseX = null;
+mouseY = null;
+gX = null;
+gY = null;
 
 //Funciones de redirección
 function salirPartida() {
@@ -42,9 +46,49 @@ function connect(partidaId) {
 
         });
         
-        stompClient.subscribe('/topic/descubrirCasilla'+partidaId, function (data) {
+        stompClient.subscribe('/topic/casillaSeleccionada'+partidaId, function (data) {
             var casilla = JSON.parse(data.body);
-            alert("sdfdsf");
+            var estado = casilla.estado;
+            var color = casilla.color;
+            var posX = casilla.posX;
+            var posY = casilla.posY;
+            //alert(casilla.estado);
+            if(estado == 'V') fill(color, posX, posY);            
+            if(estado == 'B') fill('red', posX, posY);
+            if(estado == '1'){
+                fill(color, posX, posY);
+                fillText(estado,'blue', posX, posY);
+            }
+            if(estado == '2'){
+                fill(color, posX, posY);
+                fillText(estado,'green', posX, posY);
+            }
+            if(estado == '3'){
+                fill(color, posX, posY);
+                fillText(estado,'yellow', posX, posY);
+            }
+            if(estado == '4'){
+                fill(color, posX, posY);
+                fillText(estado,'purple', posX, posY);
+            }
+            if(estado == '5'){
+                fill(color, posX, posY);
+                fillText(estado,'red', posX, posY);
+            }
+            if(estado == '6'){
+                fill(color, posX, posY);
+                fillText(estado,'blue', posX, posY);
+            }
+            if(estado == '7'){
+                fill(color, posX, posY);
+                fillText(estado,'gray', posX, posY);
+            }
+            if(estado == '8'){
+                fill(color, posX, posY);
+                fillText(estado,'black', posX, posY);
+            }
+            //fill('black', gx, gy);
+            //fillText('1','red', gx, gy);
         });
         
     });
@@ -59,7 +103,7 @@ function disconnect() {
 
 //Pruebas de integridad parte logica
 function crearPartida() {
-    stompClient.send("/app/crearJuego", {}, JSON.stringify({nombre:"Prueba",tipoPartida:"Publica",filas:8,columnas:8,numeroJugadores:3,modalidad:"Sencillo",tiempo:10,nivel:"facil",jugador:"Deivan"}));
+    stompClient.send("/app/crearJuego", {}, JSON.stringify({nombre:"Prueba",tipoPartida:"Publica",filas:15,columnas:15,numeroJugadores:3,modalidad:"Sencillo",tiempo:10,nivel:"facil",jugador:"Deivan"}));
     
 }
 
@@ -103,18 +147,18 @@ function manejoEventos(){
         $('#tablero').mousedown(function(event) {
         
         // posición del mouse
-        var mouseX = event.offsetX;
-        var mouseY = event.offsetY;
+        mouseX = event.offsetX;
+        mouseY = event.offsetY;
         // calcula la ubicación de la casilla
-        var gx = ~~ (mouseX / size);
-        var gy = ~~ (mouseY / size);
+        gx = ~~ (mouseX / size);
+        gy = ~~ (mouseY / size);
         //alert("x: "+gx+" gy: "+gy);
         
         switch (event.which) {
             case 1:
                 descubrirCasilla(gx,gy)                
-                fill('black', gx, gy);
-                fillText('1','red', gx, gy);
+                //fill('black', gx, gy);
+                //fillText('1','red', gx, gy);
                 break;
             case 2:
                 break;

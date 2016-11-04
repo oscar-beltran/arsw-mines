@@ -41,7 +41,6 @@ public class STOMPMessagestMines {
     
     @MessageMapping("/descubrirCasilla")    
     public void descubrirCasilla(DatosSeleccion datos) throws Exception {
-        System.out.println("LLEGUË"+datos.getNombre());
         Casilla casilla = juego.realizarMovimiento(datos);
         msgt.convertAndSend("/topic/casillaSeleccionada"+datos.getNombre(),casilla);
     }
