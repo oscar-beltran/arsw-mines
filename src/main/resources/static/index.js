@@ -7,5 +7,7 @@ function desCampoprivado() {
 function desCampopublico() {
     window.location.replace("/Campopublico.html");
 };
-
+function prueba() {
+    window.location.replace("/partida.html");
+};
 
