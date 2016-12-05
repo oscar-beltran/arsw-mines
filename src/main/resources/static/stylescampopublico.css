@@ -4,24 +4,6 @@ body{
     background-size: cover;
 }
 
-#cuerpo{
-    text-align: center;
-    margin: 0 auto;
-}
-
-#cuerpo table{
-    margin: 0 auto;
-    text-align: left;
-}
-div#relleno{
-    position: absolute;
-    padding-top: 15px;
-    left: 15px;
-    top: 80px;
-    height: 100px;
-    /*border: 2px solid red;*/
-}
-
 header {
     display: block;
     color: cadetblue;
@@ -39,12 +21,12 @@ nav {
 
 section {
     background-color: #ededf0;
-    margin-top: 10px;
-    /*border:1px solid orange;*/
     position: relative;
+    text-align: center;
+    color: #1e5f6d;
     margin: 10px auto;
     height: 500px;
-    width: 300px;
+    width: 600px;
 }
 
 footer {
@@ -57,25 +39,22 @@ footer {
     bottom: 0;
     position: fixed;
 }
-
-canvas {
-  display:block;
-  margin:auto;
-  border:1px dashed black;
+#listpublic{
+    text-align: left;
+    /*margin: 0 auto;*/
+   /* border: 1px solid black;*/
+    position: absolute;
+    height: 300px;
+    width: 530px;
+    left: 20px;
+    top: 40px;
+    
 }
 
-div#partida{
-    background-color: #228896;
-    position: fixed;
-    padding: 5px;
-    margin: 5%;
+table{
+    text-align: center;
+    width: 560px;
 }
-
-#imagenes td img {
-    width: 30px; height: 30px;
+table th{
+    border-bottom:2px solid black;
 }
-
-#central{
-    padding-left: 25px;
-}
-

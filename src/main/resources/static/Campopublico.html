@@ -18,23 +18,59 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 <html>
     <head>
         <title>Campos publicos</title>
-        <link rel="stylesheet" type="text/css" href="styles.css">
+        <link rel="stylesheet" type="text/css" href="stylescampopublico.css">
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <link href="http://estaticos.redribera.es/css/paneles.1426965240.css" rel="stylesheet" type="text/css">
-         <script src="/app.js"></script>
+         <script src="/index.js"></script>
     </head>
    <body>
         <header>
             <h1>JUNTOS CONTRA LAS MINAS</h1>
 	</header>
         <nav>
-              <button id="back" onclick="salirPartida()">Salir</button>
+            <button id="back" onclick="regresar()">Salir</button>
         </nav> 
        
 	<section>
+                <h2>Lista de partidas</h2>
                <div id="listpublic">
-                        <h3>Lista de partidas:</h3>
+                   <table>
+                       <tr>
+                           <th style="min-width: 150px;text-align: center">Campo</th>
+                           <th style="max-width: 60px;text-align: center">Descripcion</th>
+                           <th style="min-width: 60px">
+                               <select name="Modalidad">
+                                <option selected value="0"> Modalidad </option>
+                                <option value="1">Normal</option> 
+                                <option value="2">Contrareloj</option> 
+                                <option value="3">Equipos</option> 
+                               </select>
+                           </th>
+                           <th style="min-width: 60px">
+                               <select name="Dificultad">
+                                <option selected value="0"> Dificultad </option>
+                                <option value="1">Facil</option> 
+                                <option value="2">Medio</option> 
+                                <option value="3">Dificil</option> 
+                               </select>
+                           </th>
+                       </tr>
+                       <tr>
+                           <td>1</td>
+                           <td>The death of the world</td>
+                           <td>Normal</td>
+                           <td>Medio</td>
+                       </tr>
+                       <tr>
+                           <td>2</td>
+                           <td>The death of the universe</td>
+                           <td>Contrareloj</td>
+                           <td>Dificil</td>
+                       </tr>
+                   </table>
+                   <br>
+                   <button id="back1" onclick="prueba()">Partida Prueba</button>                  
+                   
                 </div>     
 	</section>
 

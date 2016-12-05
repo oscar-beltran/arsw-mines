@@ -1,3 +1,4 @@
+
 function descrearCampo() {
     window.location.replace("/Crearcampo.html");
 };
@@ -9,5 +10,5 @@ function desCampopublico() {
 };
 function prueba() {
     window.location.replace("/partida.html");
-};
+}
 

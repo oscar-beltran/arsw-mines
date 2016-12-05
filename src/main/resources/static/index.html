@@ -25,7 +25,7 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
         <script src="/webjars/sockjs-client/sockjs.min.js"></script>
         <script src="/webjars/stomp-websocket/stomp.min.js"></script>
         <script src="/index.js"></script>
-        <link href="http://estaticos.redribera.es/css/paneles.1426965240.css" rel="stylesheet" type="text/css">
+        
     </head>
     <body>
         <header>
@@ -37,7 +37,7 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
        
 	<section>  
                 <div id="cuerpo">
-                        <h2>Escoge tu avatar:</h2>
+                    <h1 style="color: #1e5f6d">Escoge tu avatar</h1>
                         <table>
                             <tr id="imagenes">
                                 <td><img alt="" src="/imagenes/cara1.png"/></td>
@@ -53,7 +53,7 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
                             <input id="avatar" type="text"  placeholder="nickname" name="Escoger tu avatar" required/>
                         <br>
                         <br>
-                            <button id="campopublico" onclick="prueba()">Campo publico</button>
+                        <button id="campopublico" onclick="desCampopublico()">Campo publico</button>
                         <br>
                         <br>
                         <button id="campoprivado" onclick="desCampoprivado()">Campo privado</button>

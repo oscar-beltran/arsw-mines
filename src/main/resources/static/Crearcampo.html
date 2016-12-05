@@ -21,45 +21,44 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
         <link rel="stylesheet" type="text/css" href="styles.css">
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <link href="http://estaticos.redribera.es/css/paneles.1426965240.css" rel="stylesheet" type="text/css">
-         <script src="/app.js"></script>
+         <script src="/creacampo.js"></script>
     </head>
     <body>
         <header>
             <h1>JUNTOS CONTRA LAS MINAS</h1>
 	</header>
         <nav>
-            <button id="back" onclick="salirPartida()">Salir</button>
+            <button id="back" onclick="regresar()">Salir</button>
         </nav> 
        
 	<section>
             
-                <div id="central">
-                    <form action="http://algunsitio.com/prog/usuarionuevo" method="post">
+            <div id="central">
+                <form action="#" name="elegir" >
                         <p>
                             <br>
-                            <label for="nombre">Nombre de partida: </label>
-                                      <input type="text" id="nombre"><br><br>
-                            <label for="tipa">Tipo de partida: </label>
-                            <input type="radio" name="tipo de partida" value="Partida publica"> Partida publica
-                            <input type="radio" name="tipo de partida" value="Partida privada"> Partida privada<br><br>
-                            <label for="tamano_del_tablero">Tamaño del tablero: </label>
-                                      <input type="text" id="tama"><br><br>
+                            <strong><label for="nombre">Nombre de partida</label></strong>
+                            <input type="text" id="nombre" name="nombre"><br><br>
+                                      <strong><label for="tipa">Tipo de partida</label></strong><br>
+                            <input type="radio" name="tipodepartida" value="Partida publica"> Partida publica
+                            <input type="radio" name="tipodepartida" value="Partida privada"> Partida privada<br><br>
+                            <strong><label for="tamano_del_tablero">Tamaño del tablero</label></strong>
+                            <input type="text" id="tama" name="tamanotablero"><br><br>
                             
                             
-                            <label for="numero_de_jugadores">Numero de jugadores: </label>
-                                      <input type="text" id="numer"><br><br>
+                            <strong><label for="numero_de_jugadores">Numero de jugadores</label></strong>
+                            <input type="text" id="numer" name="numberjuga"><br><br>
                                       
-                            <label for="tipa">Modalidad de juego: </label>
-                            <input type="radio" name="mod de partida" value="normal"> Normal
-                            <input type="radio" name="mod de partida" value="contrareloj"> Contrareloj
-                            <input type="radio" name="mod de partida" value="normal"> Limpieza<br><br>
+                            <strong><label for="tipa">Modalidad de juego</label></strong><br>
+                            <input type="radio" name="moddepartida" value="normal"> Normal
+                            <input type="radio" name="moddepartida" value="contrareloj"> Contrareloj
+                            <input type="radio" name="moddepartida" value="limpieza"> Limpieza<br><br>
                             
-                            <label for="tie">Nivel de juego: </label>
-                            <input type="radio" name="niv de game" value="fac"> Facil
-                            <input type="radio" name="niv de game" value="med"> Medio
-                            <input type="radio" name="niv de game" value="dificil"> Dificil<br><br>
-                            <input type="submit" value="Enviar"> <INPUT type="reset">
+                            <strong><label for="tie">Nivel de juego</label></strong><br>
+                            <input type="radio" name="nivdegame" value="facil"> Facil
+                            <input type="radio" name="nivdegame" value="medio"> Medio
+                            <input type="radio" name="nivdegame" value="dificil"> Dificil<br><br>
+                            <input name="ver" type="button" value="iniciar" /> <input type="reset">
                         </p>
                     </form>
                 </div>   
