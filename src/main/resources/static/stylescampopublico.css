@@ -4,14 +4,6 @@ body{
     background-size: cover;
 }
 
-header {
-    display: block;
-    color: cadetblue;
-    background-color: #1e5f6d;
-    text-align: center;
-    padding-top: 10px;
-    padding-bottom: 10px;
-}
 
 nav {
     display: block;
@@ -57,4 +49,33 @@ table{
 }
 table th{
     border-bottom:2px solid black;
+}
+
+#titulo{
+    text-align: center;
+    text-indent: -225px;
+}
+
+#cuerpoIndex {
+    display: block;
+    color: #e0dfd9;
+    background-color: #586467;
+    text-align: center;
+    /* padding-top: 1px; */
+    /* padding-bottom: 10px; */
+    text-shadow: 0 1px 0 #ccc, 0 2px 0 #c9c9c9, 0 3px 0 #bbb, 0 4px 0 #b9b9b9, 0 5px 0 #aaa, 0 6px 1px rgba(0,0,0,.1), 0 0 5px rgba(0,0,0,.1), 0 1px 3px rgba(0,0,0,.3), 0 3px 5px rgba(0,0,0,.2), 0 5px 10px rgba(0,0,0,.25), 0 10px 10px rgba(0,0,0,.2), 0 20px 20px rgba(0,0,0,.15);
+    font-size: 30px;
+    font-family: Impact;
+    /* background: lightblue; */
+    border-radius: 15px;
+}
+
+#logo{
+    width: 275px;
+    height: 148px;
+    margin: auto;
+    margin-top: -46px;
+    margin-bottom: -48px;
+    float: left;
+    
 }

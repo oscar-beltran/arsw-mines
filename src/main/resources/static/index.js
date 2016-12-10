@@ -12,3 +12,8 @@ function prueba() {
     window.location.replace("/partida.html");
 }
 
+function regresar(){
+    alert("Saliendo...");
+    window.location.replace("/index.html");
+}
+

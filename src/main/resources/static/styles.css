@@ -3,6 +3,10 @@ body{
     background-image: url(/imagenes/fondo1.jpg);
     background-size: cover;
 }
+#titulo{
+    text-align: center;
+    text-indent: -225px;
+}
 
 #cuerpo{
     text-align: center;
@@ -48,7 +52,7 @@ body{
     border-radius: 100%;
 }
 
-legend{
+#texto2{
     box-sizing: border-box;
     color: inherit;
     display: table;
@@ -59,7 +63,7 @@ legend{
     font-family: sans-serif;
 }
 
-input{
+#avatar{
     width: 148px;
     height: 29px;
     -webkit-border-radius: 0px 4px 4px 0px/5px 5px 4px 4px;
@@ -84,7 +88,7 @@ input{
     font-size: 20px;
 }
 #campopublico{
-        border-radius: 5px;
+    border-radius: 5px;
     width: 160px;
     height: 40px;
     background: #ff152a;
@@ -113,7 +117,7 @@ div#relleno{
     /*border: 2px solid red;*/
 }
 
-header {
+#cuerpoIndex {
     display: block;
     color: #e0dfd9;
     background-color: #586467;
@@ -127,13 +131,22 @@ header {
     border-radius: 15px;
 }
 
+#logo{
+    width: 275px;
+    height: 148px;
+    margin: auto;
+    margin-top: -46px;
+    margin-bottom: -48px;
+    float: left;
+    
+}
 nav {
     display: block;
     background-color: #8ff6ff;
     text-align: center;  
 }
 
-section {
+#seccionIndex{
     /*background-color: #ededf0;*/
     margin-top: 10px;
     /*border:1px solid orange;*/
