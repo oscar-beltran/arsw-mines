@@ -188,5 +188,3 @@ $(document).ready(
         connect("Prueba");
     }
 );
-
-

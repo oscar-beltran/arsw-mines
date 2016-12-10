@@ -175,10 +175,8 @@ nav {
 }
 
 footer {
-    display: block;
     color: lightblue;
-    text-align: center;
-    size: 10px;
+    text-align: center;    
     background-color: #1e5f6d;
     width: 100%;
     bottom: 0;
@@ -189,18 +187,17 @@ canvas {
   display:block;
   margin:auto;
   border:1px dashed black;
+  position: relative;
+  background: #1f7c2c;
 }
 
 div#partida{
-    background-color: #228896;
-    position: fixed;
-    padding: 5px;
-    margin: 5%;
+    margin: 0 auto;
+    margin-top: 10px;
+    margin-bottom: 70px;
+    width: 100%;    
 }
-
-
 
 #central{
     padding-left: 25px;
 }
-
