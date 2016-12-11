@@ -247,6 +247,39 @@ div#partida{
 
 #central{
     padding-left: 25px;
+    background: #8d9b9e;
+    width: 600px;
+    height: 408px;
+    text-align: left;
+    margin: 0 auto;
+    border-radius: 10px;
+}
+
+.centrar{
+    text-align: center;
+}
+
+.boton{
+  border-radius: 5px;
+    width: 130px;
+    height: 33px;
+    background: #ff152a;
+    color: #ffffff;
+    font-size: 20px; 
+}
+
+.texto{
+    color: #020202;
+    font-size: 20px;
+    
+}
+
+.textoP{
+    color: #fff;
+}
+
+#filCol{
+    width: 10px;
 }
 
 #filaButton{

@@ -39,28 +39,32 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
                 <form action="#" name="elegir" >
                         <p>
                             <br>
-                            <strong><label for="nombre">Nombre de partida</label></strong>
-                            <input type="text" id="nombre" name="nombre"><br><br>
-                                      <strong><label for="tipa">Tipo de partida</label></strong><br>
-                            <input type="radio" name="tipodepartida" value="Partida publica"> Partida publica
-                            <input type="radio" name="tipodepartida" value="Partida privada"> Partida privada<br><br>
-                            <strong><label for="tamano_del_tablero">Tamaño del tablero</label></strong>
-                            <input type="text" id="tama" name="tamanotablero"><br><br>
+                            <strong><label class="texto" for="nombre">Nombre de partida</label></strong>
+                                <input class="textol" type="text" id="nombre" name="nombre"><br><br>
+                                      <strong><label class="texto" for="tipa">Tipo de partida</label></strong><br>
+                            <input class="textoP" type="radio" name="tipodepartida" value="Partida publica"> Partida publica
+                            <input class="textoP" type="radio" name="tipodepartida" value="Partida privada"> Partida privada<br><br>
+                            <strong><label class="texto" for="tamano_del_tablero">Tamaño del tablero (Filas x Columnas):</label></strong>
+                            <input class="filCol" type="number" id="filas" name="tamanotablero1">
+                            <input class="filCol" type="number" id="columnas" name="tamanotablero2">
+                            <br><br>                           
                             
-                            
-                            <strong><label for="numero_de_jugadores">Numero de jugadores</label></strong>
-                            <input type="text" id="numer" name="numberjuga"><br><br>
+                            <strong><label class="texto" for="numero_de_jugadores">Número de jugadores(2-15)</label></strong>
+                            <input type="number" id="numer" name="numberjuga" min="2" max="15"><br><br>
                                       
-                            <strong><label for="tipa">Modalidad de juego</label></strong><br>
-                            <input type="radio" name="moddepartida" value="normal"> Normal
-                            <input type="radio" name="moddepartida" value="contrareloj"> Contrareloj
-                            <input type="radio" name="moddepartida" value="limpieza"> Limpieza<br><br>
+                            <strong><label class="texto" for="tipa">Modalidad de juego</label></strong><br>
+                            <input class="textoP" type="radio" name="moddepartida" value="normal"> Normal
+                            <input class="textoP" type="radio" name="moddepartida" value="contrareloj"> Contrareloj
+                            <input class="textoP" type="radio" name="moddepartida" value="limpieza"> Limpieza<br><br>
                             
-                            <strong><label for="tie">Nivel de juego</label></strong><br>
-                            <input type="radio" name="nivdegame" value="facil"> Facil
-                            <input type="radio" name="nivdegame" value="medio"> Medio
-                            <input type="radio" name="nivdegame" value="dificil"> Dificil<br><br>
-                            <input name="ver" type="button" value="iniciar" /> <input type="reset">
+                            <strong><label class="texto" for="tie">Nivel de juego</label></strong><br>
+                            <input class="textoP" type="radio" name="nivdegame" value="facil"> Facil
+                            <input class="textoP" type="radio" name="nivdegame" value="medio"> Medio
+                            <input class="textoP" type="radio" name="nivdegame" value="dificil"> Dificil<br><br>
+                            <div class="centrar">
+                                <input class="boton" name="iniciar" type="button" value="iniciar"> 
+                                <input class="boton" type="reset" value="Restablecer">
+                            </div>
                         </p>
                     </form>
                 </div>   
