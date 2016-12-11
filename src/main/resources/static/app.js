@@ -183,7 +183,13 @@ function fillText(numero, color, gx, gy){
     ctx.fillText(numero, gx*size + size/3, gy*size + 2*size/3);
 }
 
+function refIndex(){
+    alert(llegue);
+    window.location.replace("index.html");
+}
+
 $(document).ready(
+      
     function () {
         connect("Prueba");
     }

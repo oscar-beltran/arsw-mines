@@ -24,22 +24,25 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
         <!--<link href="http://estaticos.redribera.es/css/paneles.1426965240.css" rel="stylesheet" type="text/css">-->
         <script src="/app.js"></script>
     </head>
-   <body>
-        <header>
-            <h1>JUNTOS CONTRA LAS MINAS</h1>
+    <body>
+        <header id="cuerpoIndex">
+            <img id="logo" alt="" src="/imagenes/logo.png"/>
+            <h1 id="titulo" >JUNTOS CONTRA LAS MINAS</h1>
 	</header>
-        <nav>
-            <button id="back" onclick="salirPartida()">Salir</button>
-        </nav> 
-       
-	<section>
-            
+       <div id="filaButton">
+           <button id="indexButton" onclick="salirPartida()">Regresar</button>
+       </div>
+	<section>            
             <div style="position: relative">
+                <br> 
+                <br>
                     <div id="relleno">
+                        <p id="parrafoUnirsePartida">Para unirte a una partida, ingresa el código compartido por el líder.</p>
+                        <br>
                         <form action="#" name="code">
-                            <strong><label>Ingresa Clave</label></strong>
-                                <input type="text" id="numer" name="clavepartida">
-                                <input name="send" type="button" value="Go" />
+                            <strong><label id="claveUnirse">Ingresa Clave</label></strong>
+                                <input type="text" id="codigoUnirse" name="clavepartida">
+                                <input id="botonUnirse" name="send" type="button" value="Unirse" />
                         </form>    
                     </div>
                     

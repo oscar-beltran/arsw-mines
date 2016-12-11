@@ -79,3 +79,22 @@ table th{
     float: left;
     
 }
+
+#filaButton{
+    text-align: center;
+    
+}
+
+#indexButton{
+    text-align: center;
+    border-radius: 5px;
+    width: 160px;
+    height: 40px;
+    background: #ff152a;
+    color: #ffffff;
+    font-size: 20px;
+}
+
+#partidas{
+    border-radius: 5px;
+}

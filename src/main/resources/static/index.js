@@ -22,6 +22,10 @@ function regresar(){
     window.location.replace("/index.html");
 }
 
+function refIndex(){
+    window.location.replace("index.html");
+}
+
 function validarNickname(){
     var x =document.forms["validacion"]["nick"].value;
     alert(x);
