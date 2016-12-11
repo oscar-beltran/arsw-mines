@@ -24,6 +24,7 @@ function regresar(){
 
 function validarNickname(){
     var x =document.forms["validacion"]["nick"].value;
+    alert(x);
     localStorage.setItem("usuario",x);
     document.getElementById("usuario").innerHTML = localStorage.getItem("usuario");
 }
