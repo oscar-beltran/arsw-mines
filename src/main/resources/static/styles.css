@@ -278,8 +278,12 @@ div#partida{
     color: #fff;
 }
 
-#filCol{
-    width: 10px;
+.filCol{
+    width: 68px;
+    height: 25px;
+    color: #ff152a;
+    font-size: 18px;
+    text-align: center;
 }
 
 #filaButton{
@@ -287,12 +291,28 @@ div#partida{
     
 }
 
+#nombre{
+    width: 315px;
+    height: 25px;
+    color: #ff152a;
+    font-size: 18px;
+    text-align: center;
+}
+
 #indexButton{
     text-align: center;
     border-radius: 5px;
-    width: 160px;
+    width: 260px;
     height: 40px;
     background: #ff152a;
     color: #ffffff;
     font-size: 20px;
+}
+
+#numer{
+    width: 100px;
+    height: 25px;
+    color: #ff152a;
+    font-size: 18px;
+    text-align: center;
 }
