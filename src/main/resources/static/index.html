@@ -31,6 +31,7 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
         <header id="cuerpoIndex">
             <img id="logo" alt="" src="/imagenes/logo.png"/>
             <h1 id="titulo" >JUNTOS CONTRA LAS MINAS</h1>
+            <h3 id="usuario"></h3>
 	</header>
         <nav>
             
@@ -50,34 +51,29 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
                                 <td><img alt="" src="/imagenes/cara3.jpg"/></td>
                                 <td><img alt="" src="/imagenes/cara4.png"/></td>
                                 <td><img alt="" src="/imagenes/cara5.jpg"/></td>
-                                <td><img alt="" src="/imagenes/cara6.jpg"/></td>
-                                
+                                <td><img alt="" src="/imagenes/cara6.jpg"/></td>  
                             </tr>
                         </table> 
                     <legend id="texto2">
                         <span id="seleccionAvatar">2</span>
                         Ingresa Nickname:                   
                     </legend>
-                        <br>
-                            <input id="avatar" type="text"  placeholder="nickname" name="Escoger tu avatar" required/>
-                        <br>
-                        <br>
+                    <form name="validacion" >
+                        <input id="avatar" type="text"  placeholder="Nickname" name="nick" value="">
+                        <button id="validaNickname" type="sutmit" onclick="validarNickname()">Validar</button>                        
+                    </form>
+                    <hr class="hrIndex">
+                        <legend id="texto2">
+                            <span id="seleccionAvatar">3</span>
+                            Selecciona una opción:                   
+                        </legend>
                         <button id="campopublico" onclick="desCampopublico()">Campo publico</button>
-                        <br>
-                        <br>
                         <button id="campoprivado" onclick="desCampoprivado()">Campo privado</button>
-                        <br>
-                        <br>
-                            <button id="crearcampo" onclick="descrearCampo()">Crear campo</button>
+                        <button id="crearcampo" onclick="descrearCampo()">Crear campo</button>
                     </div>  
                     
                 
 	</section>
-        
-        <!--<button id="crearcampo" onclick="prueba()">Campo Prueba</button> -->
-
-	<aside>
-	</aside>
 
 	<footer>
 		<p>ARSW 2016-2</p>

@@ -24,8 +24,14 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
          <script src="/creacampo.js"></script>
     </head>
     <body>
+        
+    <script>
+        document.getElementById("usuario").innerHTML = localStorage.getItem("usuario");
+    </script>
+    
         <header>
             <h1>JUNTOS CONTRA LAS MINAS</h1>
+            <div id="usuario"></div>
 	</header>
         <nav>
             <button id="back" onclick="regresar()">Salir</button>

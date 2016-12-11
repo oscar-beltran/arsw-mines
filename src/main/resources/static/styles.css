@@ -70,6 +70,17 @@ body{
     border-radius: 100%;
 }
 
+#texto1{
+    box-sizing: border-box;
+    color: inherit;
+    display: table;
+    max-width: 100%;
+    padding: 0px 7px;
+    white-space: normal;    
+    color: #ffffff;
+    font-family: sans-serif;        
+}
+
 #texto2{
     box-sizing: border-box;
     color: inherit;
@@ -82,7 +93,7 @@ body{
 }
 
 #avatar{
-    width: 148px;
+    width: 174px        q;
     height: 29px;
     -webkit-border-radius: 0px 4px 4px 0px/5px 5px 4px 4px;
     -moz-border-radius: 0px 4px 4px 0px/0px 0px 4px 4px;
@@ -105,6 +116,15 @@ body{
     color: #ffffff;
     font-size: 20px;
 }
+#validaNickname{
+    border-radius: 5px;
+    width: 73px;
+    height: 34px;
+    background: #ff152a;
+    color: #ffffff;
+    font-size: 17px;
+}
+
 #campopublico{
     border-radius: 5px;
     width: 160px;
