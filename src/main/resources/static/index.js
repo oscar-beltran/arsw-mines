@@ -29,5 +29,4 @@ function validarNickname(){
     document.getElementById("usuario").innerHTML = localStorage.getItem("usuario");
 }
 
-window.onload(validarNickname());
 
