@@ -32,11 +32,31 @@ public class Juego {
         return estado;
     }
     
+    /**
+     * Retorna una partida
+     * @param datos
+     * @return 
+     */
+    public Datos cargarPartida(Datos datos){
+        Datos carga = null;
+        for(int i=0;i<partidas.size();i++){
+           if(partidas.get(i).getIdPartida().equals(datos.getIdPartida())){
+               Partida p = partidas.get(i);
+               carga= p.getFormDatos();             
+            } 
+        }
+        return carga;
+    }
     
+    /**
+     * Se realizan los movimientos para descubrir una nueva casilla
+     * @param datos
+     * @return 
+     */
     public Casilla realizarMovimiento(DatosSeleccion datos){
         Casilla casilla=null;
         for(int i=0;i<partidas.size();i++){
-           if(partidas.get(i).getNombre().equals(datos.getNombre())){
+           if(partidas.get(i).getIdPartida().equals(datos.getIdPartida())){
               casilla = partidas.get(i).mover(datos.getJugador(),datos.getPosX(),datos.getPosY());
             } 
         }

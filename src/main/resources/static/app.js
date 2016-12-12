@@ -1,3 +1,5 @@
+/* global Stomp */
+
 stompClient = null;
 canvas = null;
 ctx = null;
@@ -24,13 +26,16 @@ function salirPartida() {
 };
 
 // Funciones de conexión
-function connect(partidaId) {
+function connect() {
     var socket = new SockJS('/stomMines');
     stompClient = Stomp.over(socket);
     stompClient.connect({}, function (frame) {
-        console.log('Connected: ' + frame);
-        crearPartida();
+        console.log('Connected: ' + frame); 
+        partidaId = window.location.search.substr(1);        
+        //crearPartida();
+        cargaPartida();
         stompClient.subscribe('/topic/patidaCreada'+partidaId, function (data) {
+            alert("llegue Nueo");
             var newPartida = JSON.parse(data.body);
             //alert(newPartida.nombre);
             //alert(newPartida.filas);
@@ -103,8 +108,14 @@ function disconnect() {
 
 //Pruebas de integridad parte logica
 function crearPartida() {
-    stompClient.send("/app/crearJuego", {}, JSON.stringify({nombre:"Prueba",tipoPartida:"Publica",filas:15,columnas:15,numeroJugadores:3,modalidad:"Sencillo",tiempo:10,nivel:"facil",jugador:"Deivan"}));
+    partidaId="minas12345";
+    stompClient.send("/app/Nuevo-Juego", {}, JSON.stringify({idPartida:"minas12345",nombre:"Prueba",tipoPartida:"Publica",filas:15,columnas:15,numeroJugadores:3,modalidad:"Sencillo",tiempo:10,nivel:"facil",jugador:"Deivan"}));
     
+}
+
+//Carga una partida creada
+function cargaPartida(){
+    stompClient.send("/app/Cargar-Partida", {}, JSON.stringify({idPartida:partidaId,nombre:"",tipoPartida:"",filas:15,columnas:15,numeroJugadores:3,modalidad:"Sencillo",tiempo:10,nivel:"facil",jugador:"Deivan"}));
 }
 
 //Prueba de agregar jugadores, "Prueba" es el identificador de la partida
@@ -124,7 +135,7 @@ function agregarJugador() {
 
 //Prueba de agregar movimiento a una partida
 function descubrirCasilla(posX, posY) {
-      stompClient.send("/app/descubrirCasilla", {}, JSON.stringify({nombre:"Prueba",jugador:"Deivan",posX:posX,posY:posY}));
+      stompClient.send("/app/Casilla", {}, JSON.stringify({idPartida:partidaId,nombre:"Prueba",jugador:"Deivan",posX:posX,posY:posY}));
 }
 
 // Dibuja las líneas de la grilla sobre el canvas
@@ -192,47 +203,10 @@ function regresar() {
     window.location.replace("/index.html");
 }
 
-function crear(){
-    nombre=document.elegir.nombre.value;
-    estado=true;
-    if (nombre==""){
-        alert("Ingresa nombre partida");
-        estado=false;
-    }
-    var radios = document.getElementsByName("tipodepartida");    
-    for(var i = 0; i < radios.length; i++) {
-        if(radios[i].checked) tipoPartida = radios[i].value;   
-    }
-    filas=document.elegir.filas.value;
-    columnas=document.elegir.columnas.value;
-       
-    jugadores=document.elegir.numberjuga.value;
-    
-    var radios = document.getElementsByName("moddepartida");    
-    for(var i = 0; i < radios.length; i++) {
-        if(radios[i].checked) modalidadJuego = radios[i].value;   
-    }
-    
-    var radios = document.getElementsByName("nivdegame");    
-    for(var i = 0; i < radios.length; i++) {
-        if(radios[i].checked) nivelJuego = radios[i].value;   
-    } 
-    
-    usuario=localStorage.getItem("usuario");
-    if(usuario==""){
-        usuario="Incognito";
-    }
-       
-    if(estado){
-        //connect(idPartida);
-        alert("creando partida");
-        stompClient.send("/app/crearJuego", {}, JSON.stringify({nombre:nombre,tipoPartida:tipoPartida,filas:filas,columnas:columnas,numeroJugadores:jugadores,modalidad:modalidadJuego,tiempo:10000,nivel:nivelJuego,jugador:usuario}));
-    }
-}
-
 $(document).ready(
       
     function () {
-        connect("Prueba");
+        connect();
+        
     }
 );

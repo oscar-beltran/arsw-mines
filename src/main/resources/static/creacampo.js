@@ -8,7 +8,10 @@ function connect(partidaId) {
     socket = new SockJS('/stomMines');
     stompClient = Stomp.over(socket);
     stompClient.connect({}, function (frame) {
-        console.log('Connected: ' + frame);       
+        console.log('Connected: ' + frame);    
+            stompClient.subscribe('/topic/patidaCreada'+partidaId, function (data) {
+                window.location.replace("/partida.html"+"?"+idPartida);
+        });
     });
 }
 
@@ -53,10 +56,10 @@ function crear(){
     if(usuario==""){
         usuario="Incognito";
     }
-    alert(idPartida);
+    
     if(estado){
-        alert("creando partida");
-        stompClient.send("/app/crearJuego", {}, JSON.stringify({nombre:nombre,tipoPartida:tipoPartida,filas:filas,columnas:columnas,numeroJugadores:jugadores,modalidad:modalidadJuego,tiempo:10000,nivel:nivelJuego,jugador:usuario}));
+        stompClient.send("/app/Nuevo-Juego", {}, JSON.stringify({idPartida:idPartida,nombre:nombre,tipoPartida:tipoPartida,filas:filas,columnas:columnas,numeroJugadores:jugadores,modalidad:modalidadJuego,tiempo:10000,nivel:nivelJuego,jugador:usuario}));
+        //disconnect();
     }
 }
 

@@ -5,6 +5,7 @@
  */
 package edu.eci.arsw.aplicacion;
 
+import edu.eci.arsw.msgbroker.Datos;
 import java.util.ArrayList;
 
 /**
@@ -16,6 +17,7 @@ public class Partida {
     /**
      * Atributos asignados a la creacion por el usuario
      */
+    private String idPartida;
     private String nombre;
     private String tipoPartida;
     private int filas;
@@ -34,7 +36,8 @@ public class Partida {
     private ArrayList<Jugador> jugadores = new ArrayList<Jugador>();
     private ArrayList<String> colores = new ArrayList<String>();
     
-    public Partida(String nombre,String tipoPartida, Integer filas, Integer columnas, Integer numeroJugadores,String modalidad, double tiempo,String nivel){
+    public Partida(String idPartida, String nombre,String tipoPartida, Integer filas, Integer columnas, Integer numeroJugadores,String modalidad, double tiempo,String nivel){
+       this.idPartida=idPartida;
        this.nombre=nombre;
        this.tipoPartida=tipoPartida;
        this.filas=filas;
@@ -45,15 +48,34 @@ public class Partida {
        this.nivel=nivel;
     }
     
+    public Datos getFormDatos(){
+        Datos d = new Datos(idPartida,nombre,tipoPartida,filas,columnas,numeroJugadores,modalidad,tiempo,nivel,"");
+        return d;
+    }
+    
     /**
      * Inicializa los otros valores
      */
     public void inicializar(){
         int numCasillas = filas * columnas;
-        minas = numCasillas/3;
+        minas = (int) numCasillas/calculaNivel();
         banderas = minas;
         llenarColores();
         poblartablero();
+    }
+    
+    private int calculaNivel(){
+        int porcentajeMinas = 1;
+        if(nivel.equals("Dificil")){
+            porcentajeMinas=3;
+        }
+        if(nivel.equals("Medio")){
+            porcentajeMinas=6;
+        }
+        else{
+            porcentajeMinas=10;
+        }
+        return porcentajeMinas;
     }
     
     /**
@@ -244,5 +266,12 @@ public class Partida {
 
     public void setNivel(String nivel) {
         this.nivel = nivel;
+    }
+    public String getIdPartida() {
+        return idPartida;
+    }
+
+    public void setIdPartida(String idPartida) {
+        this.idPartida = idPartida;
     }
 }

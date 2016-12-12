@@ -82,7 +82,8 @@ table th{
 
 #filaButton{
     text-align: center;
-    
+    top: -2em;
+    position: relative;
 }
 
 #indexButton{

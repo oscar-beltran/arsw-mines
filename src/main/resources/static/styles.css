@@ -288,7 +288,8 @@ div#partida{
 
 #filaButton{
     text-align: center;
-    
+    top: -2em;
+    position: relative;
 }
 
 #nombre{
@@ -319,4 +320,20 @@ div#partida{
 
 #datosFaltantes{
     color: red;
+}
+
+.usuario{
+    color: #e0dfd9;
+    
+    font-size: 25px;
+}
+
+.infoPartida{
+   color: red;
+    
+    font-size: 25px; 
+}
+
+#lineaInfo{
+    text-align: center;
 }

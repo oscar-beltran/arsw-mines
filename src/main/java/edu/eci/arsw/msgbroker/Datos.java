@@ -14,7 +14,7 @@ import edu.eci.arsw.aplicacion.Partida;
  * @author Sergio Aponte
  */
 public class Datos {
-  
+    private String idPartida;
     private String nombre;
     private String tipoPartida;
     private int filas;
@@ -26,7 +26,21 @@ public class Datos {
     private String jugador;
     private boolean estado;
     
-    public void Datos(String nombre,String tipoPartida,Integer filas, Integer columnas,Integer numeroJugadores,String modalidad, double tiempo,String nivel,String jugador){
+    public void Datos(String idPartida,String nombre,String tipoPartida,Integer filas, Integer columnas,Integer numeroJugadores,String modalidad, double tiempo,String nivel,String jugador){
+       this.idPartida=idPartida;
+       this.nombre=nombre;
+       this.tipoPartida=tipoPartida;
+       this.filas=filas;
+       this.columnas=columnas;
+       this.numeroJugadores=numeroJugadores;
+       this.modalidad=modalidad;
+       this.tiempo=tiempo;
+       this.nivel=nivel;
+       this.jugador=jugador;               
+    }
+    
+    public Datos(String idPartida,String nombre,String tipoPartida,Integer filas, Integer columnas,Integer numeroJugadores,String modalidad, double tiempo,String nivel,String jugador){
+       this.idPartida=idPartida;
        this.nombre=nombre;
        this.tipoPartida=tipoPartida;
        this.filas=filas;
@@ -40,7 +54,7 @@ public class Datos {
 
     
     public Partida getNuevaPartida(){
-        Partida partida = new Partida(nombre, tipoPartida, filas, columnas, numeroJugadores, modalidad, tiempo, nivel);
+        Partida partida = new Partida(idPartida,nombre, tipoPartida, filas, columnas, numeroJugadores, modalidad, tiempo, nivel);
         return partida;
     }
     
@@ -126,5 +140,13 @@ public class Datos {
 
     public void setEstado(boolean estado) {
         this.estado = estado;
+    }
+    
+    public String getIdPartida() {
+        return idPartida;
+    }
+
+    public void setIdPartida(String idPartida) {
+        this.idPartida = idPartida;
     }
 }
