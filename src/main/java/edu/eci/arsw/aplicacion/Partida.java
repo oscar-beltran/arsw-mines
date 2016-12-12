@@ -48,12 +48,6 @@ public class Partida {
        this.nivel=nivel;
     }
     
-    public Datos getFormDatos(){
-        
-        
-        return null;
-    }
-    
     /**
      * Inicializa los otros valores
      */

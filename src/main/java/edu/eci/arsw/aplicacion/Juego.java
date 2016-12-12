@@ -38,13 +38,19 @@ public class Juego {
      * @return 
      */
     public Datos cargarPartida(Datos datos){
-        Datos carga = null;
+        System.out.println("cargando 2");
+        Datos carga = new Datos();
         for(int i=0;i<partidas.size();i++){
            if(partidas.get(i).getIdPartida().equals(datos.getIdPartida())){
+               System.out.println("cargo partida");
                Partida p = partidas.get(i);
-               carga= p.getFormDatos();             
+               carga.setIdPartida(p.getIdPartida());
+               carga.setFilas(p.getFilas());
+               carga.setColumnas(p.getColumnas());
+               carga.setNombre(p.getNombre());
             } 
         }
+        System.out.println("retornando.."+carga.getIdPartida());
         return carga;
     }
     

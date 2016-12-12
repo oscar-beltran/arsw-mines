@@ -33,10 +33,12 @@ function connect() {
         console.log('Connected: ' + frame); 
         partidaId = window.location.search.substr(1);        
         //crearPartida();
-        //cargaPartida();
+        cargaPartida();
         stompClient.subscribe('/topic/patidaCreada'+partidaId, function (data) {
-            alert("llegue Nueo");
+            //alert("llegue Nueo");
             var newPartida = JSON.parse(data.body);
+            document.getElementById("nUsuario").innerHTML =newPartida.jugador;
+            document.getElementById("nPartida").innerHTML =partidaId;
             //alert(newPartida.nombre);
             //alert(newPartida.filas);
             //alert(newPartida.columnas);
@@ -45,7 +47,6 @@ function connect() {
             size = canvasWidth/newPartida.filas;
             width = ~~ (canvas.width / size);
             height = ~~ (canvas.height / size);
-            
             manejoEventos();
             drawBoard();
 
@@ -115,7 +116,6 @@ function crearPartida() {
 
 //Carga una partida creada
 function cargaPartida(){
-    print("voy aqui");
     stompClient.send("/app/cargarPartida", {}, JSON.stringify({idPartida:partidaId,nombre:"",tipoPartida:"",filas:15,columnas:15,numeroJugadores:3,modalidad:"Sencillo",tiempo:10,nivel:"facil",jugador:"Deivan"}));
 }
 
