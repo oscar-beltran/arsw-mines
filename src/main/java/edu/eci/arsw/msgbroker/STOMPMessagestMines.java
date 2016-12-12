@@ -42,12 +42,13 @@ public class STOMPMessagestMines {
     
     @MessageMapping("/cargarPartida")    
     public void cargarPartida(DatosCarga datos) throws Exception {
-        System.out.println("llegue///1");
+        //System.out.println("llegue///1");
         Datos carga = juego.cargarPartida(datos);
         carga.setJugador(datos.getJugador());
-        System.out.println(carga.getJugador());
-        System.out.println("cargo partida :"+carga.getIdPartida());
+        //System.out.println(carga.getJugador());
+        //System.out.println("cargo partida :"+carga.getIdPartida());
         msgt.convertAndSend("/topic/patidaCreada"+datos.getIdPartida(),carga);
+        System.out.println("datos enviados");
     }
     
     @MessageMapping("/Casilla")    

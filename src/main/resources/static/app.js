@@ -32,9 +32,12 @@ function connect() {
     stompClient.connect({}, function (frame) {
         console.log('Connected: ' + frame); 
         //crearPartida();
-        cargaPartida();
+        var paramstr = window.location.search.substr(1);
+        var paramarr = paramstr.split ("&");
+        partidaId=paramarr[0];
+        nick=paramarr[1];
         stompClient.subscribe('/topic/patidaCreada'+partidaId, function (data) {
-            //alert("llegue Nuevo");
+            alert("llegue Nuevo");
             var newPartida = JSON.parse(data.body);
             document.getElementById("nUsuario").innerHTML =newPartida.jugador;
             document.getElementById("nPartida").innerHTML =partidaId;
@@ -95,6 +98,8 @@ function connect() {
             //fill('black', gx, gy);
             //fillText('1','red', gx, gy);
         });
+        
+        cargaPartida();
         
     });
 }
@@ -213,7 +218,6 @@ function regresar() {
 $(document).ready(
       
     function () {
-        pruebaConexion();
         connect();
         
     }

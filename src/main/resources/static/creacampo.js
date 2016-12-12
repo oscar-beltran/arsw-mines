@@ -11,7 +11,6 @@ function connect(partidaId) {
         console.log('Connected: ' + frame);    
             stompClient.subscribe('/topic/patidaCreada'+partidaId, function (data) {
                 nick=window.location.search.substr(1);
-                alert(nick);
                 window.location.replace("/partida.html"+"?"+idPartida+"&"+nick);
         });
     });
