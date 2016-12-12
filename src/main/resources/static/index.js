@@ -3,15 +3,22 @@
 /* global Location */
 
 function descrearCampo() {
-    window.location.replace("/Crearcampo.html");   
+    value = validarNickname();
+    if(!value){
+        window.location.replace("/Crearcampo.html"+"?"+nick);   
+    }
 }
 function desCampoprivado() {
-    window.location.replace("/Campoprivado.html");
-
+    value = validarNickname();
+    if(!value){
+        window.location.replace("/Campoprivado.html"+"?"+nick);
+    }
 }
 function desCampopublico() {
-    window.location.replace("/Campopublico.html");
-   
+    value = validarNickname();
+    if(!value){
+        window.location.replace("/Campopublico.html"+"?"+nick);
+    }   
 }
 function prueba() {
     window.location.replace("/partida.html");
@@ -27,10 +34,15 @@ function refIndex(){
 }
 
 function validarNickname(){
-    var x =document.forms["validacion"]["nick"].value;
-    alert(x);
-    localStorage.setItem("usuario",x);
-    document.getElementById("usuario").innerHTML = localStorage.getItem("usuario");
+    nick=document.getElementById("avatar").value;
+    if(nick===""){
+        alert("Ingresa Nick");
+        return true;
+    }
+    else{
+        return false;
+    }
 }
+ 
 
 

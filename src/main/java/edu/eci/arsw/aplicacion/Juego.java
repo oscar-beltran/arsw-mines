@@ -27,6 +27,7 @@ public class Juego {
     public boolean crearPartida(Datos datos){
         Partida partida = datos.getNuevaPartida();
         partida.inicializar();
+        System.out.println(datos.getJugador());
         boolean estado = partida.setJugador(datos.getJugador());
         partidas.add(partida);
         return estado;

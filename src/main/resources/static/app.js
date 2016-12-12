@@ -116,7 +116,7 @@ function crearPartida() {
 
 //Carga una partida creada
 function cargaPartida(){
-    stompClient.send("/app/cargarPartida", {}, JSON.stringify({idPartida:partidaId,nombre:"",tipoPartida:"",filas:15,columnas:15,numeroJugadores:3,modalidad:"Sencillo",tiempo:10,nivel:"facil",jugador:"Deivan"}));
+    stompClient.send("/app/cargarPartida", {}, JSON.stringify({idPartida:partidaId,nombre:"",tipoPartida:"",filas:15,columnas:15,numeroJugadores:3,modalidad:"",tiempo:10,nivel:"",jugador:""}));
 }
 
 //Prueba de agregar jugadores, "Prueba" es el identificador de la partida

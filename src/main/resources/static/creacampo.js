@@ -38,7 +38,7 @@ function crear(){
         if(radios[i].checked) tipoPartida = radios[i].value;   
     }
     filas=document.elegir.filas.value;
-    columnas=document.elegir.columnas.value;
+    columnas=document.elegir.filas.value;
        
     jugadores=document.elegir.numberjuga.value;
     
@@ -52,13 +52,13 @@ function crear(){
         if(radios[i].checked) nivelJuego = radios[i].value;   
     } 
     
-    usuario=localStorage.getItem("usuario");
-    if(usuario==""){
-        usuario="Incognito";
+    nuevoUsuario=window.location.search.substr(1); 
+    if(nuevoUsuario===""){
+        nuevoUsuario="Incognito";
     }
-    
+    alert(nuevoUsuario);
     if(estado){
-        stompClient.send("/app/crearJuego", {}, JSON.stringify({idPartida:idPartida,nombre:nombre,tipoPartida:tipoPartida,filas:filas,columnas:columnas,numeroJugadores:jugadores,modalidad:modalidadJuego,tiempo:10000,nivel:nivelJuego,jugador:usuario}));
+        stompClient.send("/app/crearJuego", {}, JSON.stringify({idPartida:idPartida,nombre:nombre,tipoPartida:tipoPartida,filas:filas,columnas:columnas,numeroJugadores:jugadores,modalidad:modalidadJuego,tiempo:10000,nivel:nivelJuego,jugador:nuevoUsuario}));
         //disconnect();
     }
 }

@@ -35,7 +35,7 @@ public class STOMPMessagestMines {
      */
     @MessageMapping("/crearJuego")    
     public void crearJuego(Datos datos) throws Exception {
-        System.out.println("holagolallllll");
+        System.out.println("Creando partida: "+datos.getIdPartida());
         datos.setEstado(juego.crearPartida(datos));
         msgt.convertAndSend("/topic/patidaCreada"+datos.getIdPartida(),datos);
     }
@@ -45,6 +45,7 @@ public class STOMPMessagestMines {
         System.out.println("llegue///1");
         Datos carga = juego.cargarPartida(datos);
         carga.setJugador(datos.getJugador());
+        System.out.println(carga.getJugador());
         System.out.println("cargo partida :"+carga.getIdPartida());
         msgt.convertAndSend("/topic/patidaCreada"+datos.getIdPartida(),carga);
     }
