@@ -8,6 +8,7 @@ package edu.eci.arsw.aplicacion;
 import edu.eci.arsw.msgbroker.Datos;
 import edu.eci.arsw.msgbroker.DatosCarga;
 import edu.eci.arsw.msgbroker.DatosSeleccion;
+import edu.eci.arsw.msgbroker.DatosTablero;
 import java.util.ArrayList;
 import org.springframework.stereotype.Service;
 
@@ -24,13 +25,15 @@ public class Juego {
     /**
      * Se reciben los datos de creacion de nueva partida
      * @param datos suministrados por el usuario
+     * @return 
      */
     public boolean crearPartida(Datos datos){
         Partida partida = datos.getNuevaPartida();
         partida.inicializar();
         System.out.println(datos.getJugador());
         boolean estado = partida.setJugador(datos.getJugador());
-        partidas.add(partida);
+        partida.setNumeroJugadores(partida.getNumeroJugadores()+1);
+        boolean add = partidas.add(partida);
         return estado;
     }
     
@@ -56,6 +59,34 @@ public class Juego {
         }
         //System.out.println("retornando.."+carga.getIdPartida());
         return carga;
+    }
+    
+    /**
+     * Datos de minas y vidas de un jugador
+     * @param jugador
+     * @param partida
+     * @return 
+     */
+    public DatosTablero getVidasMinas(String jugador, String partida){
+        DatosTablero datos = new DatosTablero();
+        int vidas = 0;
+        int minas = 0;
+        for(int i=0;i<partidas.size();i++){
+           if(partidas.get(i).getIdPartida().equals(partida)){
+               //System.out.println("cargo partida");
+               Partida p = partidas.get(i);
+               Tablero t = p.getTablero();
+               for(Jugador j : p.getJugadores()){
+                   if(j.getNick().equals(jugador)){
+                      vidas = j.getVidas();
+                   }
+               }
+               minas = t.getMinas();
+            } 
+        }
+        datos.setMinas(minas);
+        datos.setVidas(vidas);
+        return datos;
     }
     
     /**

@@ -79,8 +79,16 @@ public class Tablero {
                 }
             }                   
         }
-        while (cont <= minas);
+        while (cont < minas);
         }
+    /**
+     * Retorna numero de minas
+     * @return 
+     */
+    public int getMinas(){
+        return minas;
+    }
+    
     
     /**
      * Asigna algoritmo de numeros al tablero
