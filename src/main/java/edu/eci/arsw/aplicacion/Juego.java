@@ -6,6 +6,7 @@
 package edu.eci.arsw.aplicacion;
 
 import edu.eci.arsw.msgbroker.Datos;
+import edu.eci.arsw.msgbroker.DatosCarga;
 import edu.eci.arsw.msgbroker.DatosSeleccion;
 import java.util.ArrayList;
 import org.springframework.stereotype.Service;
@@ -38,20 +39,21 @@ public class Juego {
      * @param datos
      * @return 
      */
-    public Datos cargarPartida(Datos datos){
-        System.out.println("cargando 2");
+    public Datos cargarPartida(DatosCarga datos){
+        //System.out.println("cargando 2");
         Datos carga = new Datos();
         for(int i=0;i<partidas.size();i++){
            if(partidas.get(i).getIdPartida().equals(datos.getIdPartida())){
-               System.out.println("cargo partida");
+               //System.out.println("cargo partida");
                Partida p = partidas.get(i);
                carga.setIdPartida(p.getIdPartida());
                carga.setFilas(p.getFilas());
                carga.setColumnas(p.getColumnas());
                carga.setNombre(p.getNombre());
+               carga.setJugador(datos.getJugador());
             } 
         }
-        System.out.println("retornando.."+carga.getIdPartida());
+        //System.out.println("retornando.."+carga.getIdPartida());
         return carga;
     }
     

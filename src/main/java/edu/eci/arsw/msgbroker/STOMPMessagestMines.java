@@ -41,7 +41,7 @@ public class STOMPMessagestMines {
     }
     
     @MessageMapping("/cargarPartida")    
-    public void cargarPartida(Datos datos) throws Exception {
+    public void cargarPartida(DatosCarga datos) throws Exception {
         System.out.println("llegue///1");
         Datos carga = juego.cargarPartida(datos);
         carga.setJugador(datos.getJugador());
@@ -52,7 +52,9 @@ public class STOMPMessagestMines {
     
     @MessageMapping("/Casilla")    
     public void descubrirCasilla(DatosSeleccion datos) throws Exception {
+        System.out.println("agregando casillas a:"+datos.getIdPartida());
         Casilla casilla = juego.realizarMovimiento(datos);
+        System.out.println("Casilla seleccionada:"+casilla.getEstado());
         msgt.convertAndSend("/topic/casillaSeleccionada"+datos.getIdPartida(),casilla);
     }
     

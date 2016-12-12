@@ -12,28 +12,17 @@ package edu.eci.arsw.msgbroker;
  */
 public class DatosSeleccion {
     private String idPartida;
-    private String nombre;
     private String jugador;
     private int posX;
     private int posY;
     
-    public void DatosSeleccion(String idPartida,String nombre, String jugador, int posX, int posY) {
+    public void DatosSeleccion(String idPartida, String jugador, int posX, int posY) {
         this.idPartida=idPartida;
-        this.nombre = nombre;
         this.jugador = jugador;
         this.posX = posX;
         this.posY = posY;
     }
-    
-    
 
-    public String getNombre() {
-        return nombre;
-    }
-
-    public void setNombre(String nombre) {
-        this.nombre = nombre;
-    }
 
     public String getJugador() {
         return jugador;

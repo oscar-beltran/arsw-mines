@@ -31,11 +31,11 @@ function connect() {
     stompClient = Stomp.over(socket);
     stompClient.connect({}, function (frame) {
         console.log('Connected: ' + frame); 
-        partidaId = window.location.search.substr(1);        
+        pruebaConexion();
         //crearPartida();
         cargaPartida();
         stompClient.subscribe('/topic/patidaCreada'+partidaId, function (data) {
-            //alert("llegue Nueo");
+            alert("llegue Nuevo");
             var newPartida = JSON.parse(data.body);
             document.getElementById("nUsuario").innerHTML =newPartida.jugador;
             document.getElementById("nPartida").innerHTML =partidaId;
@@ -100,6 +100,13 @@ function connect() {
     });
 }
 
+function pruebaConexion(){
+    var paramstr = window.location.search.substr(1);
+    var paramarr = paramstr.split ("&");
+    partidaId=paramarr[0];
+    nick=paramarr[1];   
+}
+
 function disconnect() {
     if (stompClient != null) {
         stompClient.disconnect();
@@ -116,7 +123,7 @@ function crearPartida() {
 
 //Carga una partida creada
 function cargaPartida(){
-    stompClient.send("/app/cargarPartida", {}, JSON.stringify({idPartida:partidaId,nombre:"",tipoPartida:"",filas:15,columnas:15,numeroJugadores:3,modalidad:"",tiempo:10,nivel:"",jugador:""}));
+    stompClient.send("/app/cargarPartida", {}, JSON.stringify({idPartida:partidaId,jugador:nick}));
 }
 
 //Prueba de agregar jugadores, "Prueba" es el identificador de la partida
@@ -136,7 +143,7 @@ function agregarJugador() {
 
 //Prueba de agregar movimiento a una partida
 function descubrirCasilla(posX, posY) {
-      stompClient.send("/app/Casilla", {}, JSON.stringify({idPartida:partidaId,nombre:"Prueba",jugador:"Deivan",posX:posX,posY:posY}));
+      stompClient.send("/app/Casilla", {}, JSON.stringify({idPartida:partidaId,jugador:nick,posX:posX,posY:posY}));
 }
 
 // Dibuja las líneas de la grilla sobre el canvas

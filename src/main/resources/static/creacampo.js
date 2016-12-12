@@ -10,7 +10,9 @@ function connect(partidaId) {
     stompClient.connect({}, function (frame) {
         console.log('Connected: ' + frame);    
             stompClient.subscribe('/topic/patidaCreada'+partidaId, function (data) {
-                window.location.replace("/partida.html"+"?"+idPartida);
+                nick=window.location.search.substr(1);
+                alert(nick);
+                window.location.replace("/partida.html"+"?"+idPartida+"&"+nick);
         });
     });
 }
@@ -29,7 +31,7 @@ function regresar() {
 function crear(){
     nombre=document.elegir.nombre.value;
     estado=true;
-    if (nombre==""){
+    if (nombre===""){
         alert("Ingresa nombre partida");
         estado=false;
     }
@@ -51,12 +53,10 @@ function crear(){
     for(var i = 0; i < radios.length; i++) {
         if(radios[i].checked) nivelJuego = radios[i].value;   
     } 
-    
     nuevoUsuario=window.location.search.substr(1); 
     if(nuevoUsuario===""){
         nuevoUsuario="Incognito";
     }
-    alert(nuevoUsuario);
     if(estado){
         stompClient.send("/app/crearJuego", {}, JSON.stringify({idPartida:idPartida,nombre:nombre,tipoPartida:tipoPartida,filas:filas,columnas:columnas,numeroJugadores:jugadores,modalidad:modalidadJuego,tiempo:10000,nivel:nivelJuego,jugador:nuevoUsuario}));
         //disconnect();
