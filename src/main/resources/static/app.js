@@ -37,7 +37,7 @@ function connect() {
         partidaId=paramarr[0];
         nick=paramarr[1];
         stompClient.subscribe('/topic/patidaCreada'+partidaId, function (data) {
-            alert("llegue Nuevo");
+            //alert("llegue Nuevo");
             var newPartida = JSON.parse(data.body);
             tipoPartida=newPartida.tipoPartida;
             document.getElementById("nUsuario").innerHTML =newPartida.jugador;
@@ -55,6 +55,13 @@ function connect() {
             manejoEventos();
             drawBoard();
 
+        });
+        
+         stompClient.subscribe('/topic/vidasMinas'+partidaId, function (data) {
+            //alert("llegue Nuevo");
+            var newPartida = JSON.parse(data.body);
+            document.getElementById("vidas").innerHTML =newPartida.vidas;
+            document.getElementById("minas").innerHTML =newPartida.minas;
         });
         
         stompClient.subscribe('/topic/casillaSeleccionada'+partidaId, function (data) {
