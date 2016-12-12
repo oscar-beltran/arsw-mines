@@ -39,20 +39,7 @@ public class Datos {
        this.jugador=jugador;               
     }
     
-    public Datos(String idPartida,String nombre,String tipoPartida,Integer filas, Integer columnas,Integer numeroJugadores,String modalidad, double tiempo,String nivel,String jugador){
-       this.idPartida=idPartida;
-       this.nombre=nombre;
-       this.tipoPartida=tipoPartida;
-       this.filas=filas;
-       this.columnas=columnas;
-       this.numeroJugadores=numeroJugadores;
-       this.modalidad=modalidad;
-       this.tiempo=tiempo;
-       this.nivel=nivel;
-       this.jugador=jugador;               
-    }
-
-    
+       
     public Partida getNuevaPartida(){
         Partida partida = new Partida(idPartida,nombre, tipoPartida, filas, columnas, numeroJugadores, modalidad, tiempo, nivel);
         return partida;

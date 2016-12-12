@@ -49,8 +49,9 @@ public class Partida {
     }
     
     public Datos getFormDatos(){
-        Datos d = new Datos(idPartida,nombre,tipoPartida,filas,columnas,numeroJugadores,modalidad,tiempo,nivel,"");
-        return d;
+        
+        
+        return null;
     }
     
     /**

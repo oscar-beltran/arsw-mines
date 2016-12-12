@@ -33,13 +33,14 @@ public class STOMPMessagestMines {
      * @param datos
      * @throws Exception 
      */
-    @MessageMapping("/Nuevo-Juego")    
+    @MessageMapping("/crearJuego")    
     public void crearJuego(Datos datos) throws Exception {
+        System.out.println("holagolallllll");
         datos.setEstado(juego.crearPartida(datos));
         msgt.convertAndSend("/topic/patidaCreada"+datos.getIdPartida(),datos);
     }
     
-    @MessageMapping("/Cargar-Partida")    
+    @MessageMapping("/cargarPartida")    
     public void cargarPartida(Datos datos) throws Exception {
         System.out.println("llegue///1");
         Datos carga = juego.cargarPartida(datos);

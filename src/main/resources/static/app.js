@@ -33,7 +33,7 @@ function connect() {
         console.log('Connected: ' + frame); 
         partidaId = window.location.search.substr(1);        
         //crearPartida();
-        cargaPartida();
+        //cargaPartida();
         stompClient.subscribe('/topic/patidaCreada'+partidaId, function (data) {
             alert("llegue Nueo");
             var newPartida = JSON.parse(data.body);
@@ -115,7 +115,8 @@ function crearPartida() {
 
 //Carga una partida creada
 function cargaPartida(){
-    stompClient.send("/app/Cargar-Partida", {}, JSON.stringify({idPartida:partidaId,nombre:"",tipoPartida:"",filas:15,columnas:15,numeroJugadores:3,modalidad:"Sencillo",tiempo:10,nivel:"facil",jugador:"Deivan"}));
+    print("voy aqui");
+    stompClient.send("/app/cargarPartida", {}, JSON.stringify({idPartida:partidaId,nombre:"",tipoPartida:"",filas:15,columnas:15,numeroJugadores:3,modalidad:"Sencillo",tiempo:10,nivel:"facil",jugador:"Deivan"}));
 }
 
 //Prueba de agregar jugadores, "Prueba" es el identificador de la partida
