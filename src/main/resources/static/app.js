@@ -31,11 +31,10 @@ function connect() {
     stompClient = Stomp.over(socket);
     stompClient.connect({}, function (frame) {
         console.log('Connected: ' + frame); 
-        pruebaConexion();
         //crearPartida();
         cargaPartida();
         stompClient.subscribe('/topic/patidaCreada'+partidaId, function (data) {
-            alert("llegue Nuevo");
+            //alert("llegue Nuevo");
             var newPartida = JSON.parse(data.body);
             document.getElementById("nUsuario").innerHTML =newPartida.jugador;
             document.getElementById("nPartida").innerHTML =partidaId;
@@ -214,6 +213,7 @@ function regresar() {
 $(document).ready(
       
     function () {
+        pruebaConexion();
         connect();
         
     }
