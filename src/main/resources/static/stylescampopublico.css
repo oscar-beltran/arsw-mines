@@ -99,3 +99,21 @@ table th{
 #partidas{
     border-radius: 5px;
 }
+
+
+#back1{
+    text-align: center;
+    border-radius: 5px;
+    width: 160px;
+    height: 40px;
+    background: #ff152a;
+    color: #ffffff;
+    font-size: 20px;
+    position: relative;
+    left:200px;
+}
+
+table tr td{
+    font-size: 15px;
+    font-family: cursive;
+}
