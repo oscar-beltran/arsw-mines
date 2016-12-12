@@ -63,6 +63,14 @@ public class Tablero {
     }
     
     /**
+     * Retorna todas las casillas
+     * @return 
+     */
+    public Casilla[][] getCasillas(){
+        return casillas;
+    }
+    
+    /**
      * Agrega minas a un nuevo tablero
      */
     public void agregarMinas(){

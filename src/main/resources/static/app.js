@@ -54,7 +54,7 @@ function connect() {
             height = ~~ (canvas.height / size);
             manejoEventos();
             drawBoard();
-
+            descubrirTodasCasilla();
         });
         
          stompClient.subscribe('/topic/vidasMinas'+partidaId, function (data) {
@@ -181,6 +181,10 @@ function agregarJugador() {
 //Prueba de agregar movimiento a una partida
 function descubrirCasilla(posX, posY) {
       stompClient.send("/app/Casilla", {}, JSON.stringify({idPartida:partidaId,jugador:nick,posX:posX,posY:posY}));
+}
+
+function descubrirTodasCasilla() {
+      stompClient.send("/app/poblarCasillas", {}, JSON.stringify({idPartida:partidaId,jugador:nick,posX:0,posY:0}));
 }
 
 // Dibuja las líneas de la grilla sobre el canvas

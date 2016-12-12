@@ -139,6 +139,38 @@ public class Juego {
         return casilla;
     }
     
+    public Casilla[][] consultaCasilla(DatosSeleccion datos){
+        Casilla[][] casilla=null;
+        for(int i=0;i<partidas.size();i++){
+           if(partidas.get(i).getIdPartida().equals(datos.getIdPartida())){
+              casilla = partidas.get(i).getTablero().getCasillas();
+            } 
+        }
+        return casilla;
+    }
+    
+    /**
+     *
+     * @param datos
+     * @param value
+     * @return
+     */
+    public int consultaDatosPartida(DatosSeleccion datos, String value){
+        int valor =0;
+        for(int i=0;i<partidas.size();i++){
+           if(partidas.get(i).getIdPartida().equals(datos.getIdPartida())){
+              if(value == "filas"){
+                  valor = partidas.get(i).getFilas();
+              }
+              if(value == "columnas"){
+                  valor = partidas.get(i).getColumnas();
+              }
+             
+            } 
+        }
+        return valor;
+    }
+    
     /**
      * Se agrega un jugador a una partida publica
      * @param nick

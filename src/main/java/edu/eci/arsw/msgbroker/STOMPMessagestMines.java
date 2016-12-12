@@ -81,6 +81,22 @@ public class STOMPMessagestMines {
         }        
     }
     
-    
+    @MessageMapping("/poblarCasillas")    
+    public void poblarCasillas(DatosSeleccion datos) throws Exception {
+        System.out.println("Poblando tablero:"+datos.getIdPartida());
+        Casilla[][] casillas = juego.consultaCasilla(datos);
+        Casilla c = null;
+        int filas = juego.consultaDatosPartida(datos,"filas");
+        int columnas = juego.consultaDatosPartida(datos,"columnas");
+        for(int i = 0; i<filas;i++){
+            for(int j=0;j<columnas;j++){
+                c=casillas[i][j];
+                if(c.isActiva()){
+                    System.out.println(c.getEstado());
+                    msgt.convertAndSend("/topic/casillaSeleccionada"+datos.getIdPartida(),c);   
+                }
+            }
+        }
+    }
       
 }
