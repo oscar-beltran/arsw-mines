@@ -11,11 +11,19 @@ function connect() {
             stompClient.subscribe('/topic/mensaje.' + jugador, function (data) {                
                 alert(data.body);
             });
-            stompClient.subscribe('/topic/respuesta.' + jugador, function (data) {
+            stompClient.subscribe('/topic/respuesta.' + jugador, function (data) {                
                 var obj = JSON.parse(data.body);                
                 window.location.replace("/partida.html"+"?"+obj.idPartida+"&"+obj.jugador);
+                disconnect();
             });
     });    
+}
+
+function disconnect() {
+    if (stompClient != null) {
+        stompClient.disconnect();
+    }
+    console.log("Disconnected");
 }
 
 function validar(){

@@ -51,8 +51,7 @@ public class STOMPMessagestMines {
     }
     
     @MessageMapping("/ValidarCodigo")    
-    public void validarCodigo(DatosCarga datos) throws Exception {        
-        //System.out.println(datos.getJugador());
+    public void validarCodigo(DatosCarga datos) throws Exception {
         String clave = datos.getIdPartida();
         if(clave.trim().isEmpty()){
             msgt.convertAndSend("/topic/mensaje." + datos.getJugador(), "Por favor llene el campo solicitado...");
@@ -78,7 +77,8 @@ public class STOMPMessagestMines {
         }
         else{
             msgt.convertAndSend("/topic/retirarJugador"+datos.getIdPartida(),carga2);
-        }        
+
+        }
     }
     
     @MessageMapping("/poblarCasillas")    
@@ -98,5 +98,7 @@ public class STOMPMessagestMines {
             }
         }
     }
+
       
+
 }

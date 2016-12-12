@@ -1,4 +1,4 @@
-/*
+    /*
  * Copyright (C) 2016 Pivotal Software, Inc.
  *
  * This program is free software: you can redistribute it and/or modify
@@ -32,13 +32,24 @@ public class WebSocketConfig extends AbstractWebSocketMessageBrokerConfigurer {
 
     @Override
     public void configureMessageBroker(MessageBrokerRegistry config) {
-        config.enableSimpleBroker("/topic");
+        //config.enableSimpleBroker("/topic");
+        config.enableStompBrokerRelay("/topic/").setRelayHost("35.162.214.234").setRelayPort(61613);
+        //config.setApplicationDestinationPrefixes("/app");
+        /*config.enableStompBrokerRelay("/topic/").setRelayHost("zebra.rmq.cloudamqp.com").setRelayPort(61613).
+                setClientLogin("qdzrqwlk").
+                setClientPasscode("cwsIMHxuB2acffGunv3q9t_qkgRxSG4p").
+                setSystemLogin("qdzrqwlk").
+                setSystemPasscode("cwsIMHxuB2acffGunv3q9t_qkgRxSG4p").
+                setVirtualHost("qdzrqwlk");*/
+                
         config.setApplicationDestinationPrefixes("/app");
     }
 
     @Override
     public void registerStompEndpoints(StompEndpointRegistry registry) {
-        registry.addEndpoint("/stomMines").withSockJS();
+        //registry.addEndpoint("/stomMines").withSockJS();
+        registry.addEndpoint("/stomMines").setAllowedOrigins("*").withSockJS();
+        //registry.addEndpoint("/stompendpoint").setAllowedOrigins("*").withSockJS();
     }
 
 }
