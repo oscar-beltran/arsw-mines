@@ -39,11 +39,14 @@ function connect() {
         stompClient.subscribe('/topic/patidaCreada'+partidaId, function (data) {
             alert("llegue Nuevo");
             var newPartida = JSON.parse(data.body);
+            tipoPartida=newPartida.tipoPartida;
             document.getElementById("nUsuario").innerHTML =newPartida.jugador;
-            document.getElementById("nPartida").innerHTML =partidaId;
-            //alert(newPartida.nombre);
-            //alert(newPartida.filas);
-            //alert(newPartida.columnas);
+            if(tipoPartida==="Publica"){
+                document.getElementById("nPartida").innerHTML ="Pública";
+            }            
+            else{
+                document.getElementById("nPartida").innerHTML =partidaId;            
+            }
             canvas = document.getElementById("tablero");
             ctx = canvas.getContext('2d');
             size = canvasWidth/newPartida.filas;
@@ -61,40 +64,8 @@ function connect() {
             var posX = casilla.posX;
             var posY = casilla.posY;
             //alert(casilla.estado);
-            if(estado == 'V') fill(color, posX, posY);            
-            if(estado == 'B') fill('red', posX, posY);
-            if(estado == '1'){
-                fill(color, posX, posY);
-                fillText(estado,'blue', posX, posY);
-            }
-            if(estado == '2'){
-                fill(color, posX, posY);
-                fillText(estado,'green', posX, posY);
-            }
-            if(estado == '3'){
-                fill(color, posX, posY);
-                fillText(estado,'yellow', posX, posY);
-            }
-            if(estado == '4'){
-                fill(color, posX, posY);
-                fillText(estado,'purple', posX, posY);
-            }
-            if(estado == '5'){
-                fill(color, posX, posY);
-                fillText(estado,'red', posX, posY);
-            }
-            if(estado == '6'){
-                fill(color, posX, posY);
-                fillText(estado,'blue', posX, posY);
-            }
-            if(estado == '7'){
-                fill(color, posX, posY);
-                fillText(estado,'gray', posX, posY);
-            }
-            if(estado == '8'){
-                fill(color, posX, posY);
-                fillText(estado,'black', posX, posY);
-            }
+            
+            cargaCasilla(estado, color, posX, posY);
             //fill('black', gx, gy);
             //fillText('1','red', gx, gy);
         });
@@ -102,6 +73,52 @@ function connect() {
         cargaPartida();
         
     });
+}
+
+function cargaCasilla(estado ,color, posX, posY){
+    switch (estado){
+        case 'V':
+            fill(color, posX, posY);
+            break;
+        case 'B':
+            fill('red', posX, posY);
+            break;
+        case '1':
+            fill(color, posX, posY);
+            fillText(estado,'blue', posX, posY);
+            break;
+        case '2':
+            fill(color, posX, posY);
+            fillText(estado,'green', posX, posY);
+            break;
+        case '3':
+            fill(color, posX, posY);
+            fillText(estado,'yellow', posX, posY);
+            break;
+        case '4':
+            fill(color, posX, posY);
+            fillText(estado,'purple', posX, posY);
+            break;
+        case '5':
+            fill(color, posX, posY);
+            fillText(estado,'red', posX, posY);
+            break;
+        case '6':
+            fill(color, posX, posY);
+            fillText(estado,'blue', posX, posY);
+            break;
+        case '7':
+            fill(color, posX, posY);
+            fillText(estado,'gray', posX, posY);
+            break;
+        case '8':
+            fill(color, posX, posY);
+            fillText(estado,'black', posX, posY);
+            break;
+        default:
+            alert("Error increíblemente extraño, perdón las molestias orz");
+            break;
+    }      
 }
 
 function pruebaConexion(){

@@ -138,8 +138,8 @@ public class Tablero {
         if(!casillas[posX][posY].isActiva()){
            casillas[posX][posY].setActiva(true);
            casillas[posX][posY].setColor(color);
-           casilla = casillas[posX][posY];
-        }     
+        }  
+        casilla = casillas[posX][posY];
         return casilla;
     }
 }
