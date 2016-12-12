@@ -34,12 +34,12 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
         <section id="partidas">
                 <h2>Lista de partidas</h2>
                <div id="listpublic">
-                   <table>
+                   <table>                       
                        <tr>
                            <th style="min-width: 150px;text-align: center">Campo</th>
                            <th style="max-width: 60px;text-align: center">Descripcion</th>
                            <th style="min-width: 60px">
-                               <select name="Modalidad">
+                               <select name="Modalidad" onchange="this.form.submit()">
                                 <option selected value="0"> Modalidad </option>
                                 <option value="1">Normal</option> 
                                 <option value="2">Contrareloj</option> 
@@ -47,7 +47,7 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
                                </select>
                            </th>
                            <th style="min-width: 60px">
-                               <select name="Dificultad">
+                               <select name="Dificultad" onchange="this.form.submit()">
                                 <option selected value="0"> Dificultad </option>
                                 <option value="1">Facil</option> 
                                 <option value="2">Medio</option> 
@@ -63,13 +63,31 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
                        </tr>
                        <tr>
                            <td>2</td>
-                           <td>The death of the universe</td>
+                           <td>partida3</td>
                            <td>Contrareloj</td>
                            <td>Dificil</td>
                        </tr>
+                       <tr>
+                           <td>3</td>
+                           <td>partida4</td>
+                           <td>Normal</td>
+                           <td>Medio</td>
+                       </tr>
+                       <tr>
+                           <td>4</td>
+                           <td>Partida5</td>
+                           <td>Contrareloj</td>
+                           <td>Dificil</td>
+                       </tr>
+                       <tr>
+                           <td>5</td>
+                           <td>Partida5</td>
+                           <td>Contrareloj</td>
+                           <td>Dificil</td>
+                       </tr>                       
                    </table>
                    <br>
-                   <button id="back1" onclick="prueba()">Partida Prueba</button>                  
+                   <button id="back1" onclick="prueba()">Unirme</button>                  
                    
                 </div>     
 	</section>

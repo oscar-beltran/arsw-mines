@@ -82,7 +82,6 @@ public class Juego {
                    if(j.getNick().equals(jugador)){
                       vidas = j.getVidas();
                       if(vidas==0){
-                          eliminaJugador(jugador,partida);
                           isVivo=false;
                       }
                    }
@@ -94,6 +93,7 @@ public class Juego {
         datos.setMinas(minas);
         datos.setVidas(vidas);
         datos.setBanderas(banderas);
+        if(isVivo==false){eliminaJugador(jugador, partida);}
         datos.setIsVivo(isVivo);
         return datos;
     }
@@ -104,16 +104,23 @@ public class Juego {
      * @param partida
      */
     public  void eliminaJugador(String jugador, String partida){
-       for(int i=0;i<partidas.size();i++){
+       boolean estado = true;
+       Jugador jug = null;
+       int index = 0;
+       for(int i=0;i<partidas.size() && estado;i++){
            if(partidas.get(i).getIdPartida().equals(partida)){
                for(Jugador j : partidas.get(i).getJugadores()){
-                   if(j.getNick().equals(jugador)){
-                      partidas.get(i).getJugadores().remove(j);
-                       System.out.println("jugador eliminado");
+                   if(j.getNick().equals(jugador) && estado){
+                       jug=j;
+                       index = i;
                    }
                }
             } 
         } 
+       if(jug!= null){
+           partidas.get(index).getJugadores().remove(jug);
+           System.out.println("eliminado con exito QQQQQQQQQQQ");
+       }
     }
     
     

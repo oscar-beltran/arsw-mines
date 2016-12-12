@@ -65,5 +65,11 @@ $(document).ready(function(){
 	});
         
 });
+
+$(document).ready(iniciar)(
+            function iniciar(){
+                $("tabla tr td").click(clickTabla);
+            }
+        );
  
-  
+
