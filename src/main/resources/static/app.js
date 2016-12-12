@@ -78,6 +78,14 @@ function connect() {
             //fillText('1','red', gx, gy);
         });
         
+         stompClient.subscribe('/topic/retirarJugador'+partidaId, function (data) {
+            var retira = JSON.parse(data.body);
+            if(!retira.isVivo){
+                alert("Perdiste la partida...");
+                window.location.replace("/index.html");
+            }
+        });
+        
         cargaPartida();
         
     });

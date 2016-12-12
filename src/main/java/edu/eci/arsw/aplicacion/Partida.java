@@ -124,9 +124,10 @@ public class Partida {
             for(int i=0;i<jugadores.size();i++){
                 if(jugadores.get(i).getNick().equals(jugador)){
                     color=jugadores.get(i).getColor();
+                    boolean estado = tablero.isCasilla(color, posX, posY);
                     casilla = tablero.getCasilla(color,posX,posY);
-                    if(casilla.getEstado().equals("B")){
-
+                    System.out.println("la casilla esta activa:"+estado);
+                    if(casilla.getEstado().equals("B") && !estado){
                         jugadores.get(i).setVidas(jugadores.get(i).getVidas()-1);
                         minas=minas-1;
                     }

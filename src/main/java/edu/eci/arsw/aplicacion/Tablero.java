@@ -150,6 +150,14 @@ public class Tablero {
         casilla = casillas[posX][posY];
         return casilla;
     }
+    
+    public boolean isCasilla(String color, Integer posX, Integer posY){
+        boolean casilla = true;
+        if(!casillas[posX][posY].isActiva()){
+           casilla=casillas[posX][posY].isActiva();
+        }  
+        return casilla;
+    }
 }
     
    
