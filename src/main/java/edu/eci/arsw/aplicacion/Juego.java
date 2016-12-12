@@ -51,6 +51,7 @@ public class Juego {
                carga.setColumnas(p.getColumnas());
                carga.setNombre(p.getNombre());
                carga.setJugador(datos.getJugador());
+               carga.setTipoPartida(p.getTipoPartida());
             } 
         }
         //System.out.println("retornando.."+carga.getIdPartida());

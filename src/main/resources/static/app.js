@@ -39,11 +39,14 @@ function connect() {
         stompClient.subscribe('/topic/patidaCreada'+partidaId, function (data) {
             alert("llegue Nuevo");
             var newPartida = JSON.parse(data.body);
+            tipoPartida=newPartida.tipoPartida;
             document.getElementById("nUsuario").innerHTML =newPartida.jugador;
-            document.getElementById("nPartida").innerHTML =partidaId;
-            //alert(newPartida.nombre);
-            //alert(newPartida.filas);
-            //alert(newPartida.columnas);
+            if(tipoPartida==="Publica"){
+                document.getElementById("nPartida").innerHTML ="Pública";
+            }            
+            else{
+                document.getElementById("nPartida").innerHTML =partidaId;            
+            }
             canvas = document.getElementById("tablero");
             ctx = canvas.getContext('2d');
             size = canvasWidth/newPartida.filas;
