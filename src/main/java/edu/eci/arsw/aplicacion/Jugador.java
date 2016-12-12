@@ -16,6 +16,7 @@ public class Jugador {
     private String nick;
     private String color;
     private int vidas;
+    private boolean isVivo = true;
     
     
     public Jugador(String nick, String color){
@@ -47,5 +48,13 @@ public class Jugador {
 
     public void setVidas(int vidas) {
         this.vidas = vidas;
+    }
+    
+    public boolean isIsVivo() {
+        return isVivo;
+    }
+
+    public void setIsVivo(boolean isVivo) {
+        this.isVivo = isVivo;
     }
 }
