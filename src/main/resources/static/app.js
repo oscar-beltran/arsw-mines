@@ -62,6 +62,7 @@ function connect() {
             var newPartida = JSON.parse(data.body);
             document.getElementById("vidas").innerHTML =newPartida.vidas;
             document.getElementById("minas").innerHTML =newPartida.minas;
+            document.getElementById("banderas").innerHTML =newPartida.banderas;
         });
         
         stompClient.subscribe('/topic/casillaSeleccionada'+partidaId, function (data) {

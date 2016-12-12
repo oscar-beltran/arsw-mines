@@ -12,11 +12,15 @@ package edu.eci.arsw.msgbroker;
 public class DatosTablero {
   
     private int vidas;
-    private int  minas;
+    private int minas;
+    private int banderas;
+    private boolean isVivo;
     
-    public void DatosTablero(Integer vidas, Integer minas){
+    public void DatosTablero(Integer vidas, Integer minas, Integer banderas,boolean isVivo){
           this.minas=minas;
           this.vidas=vidas;
+          this.banderas=banderas;
+          this.isVivo=isVivo;
     }
     
     
@@ -36,7 +40,27 @@ public class DatosTablero {
     public void setMinas(int minas) {
         this.minas = minas;
     }
+    
+    
 
+    public int getBanderas() {
+        return banderas;
+    }
+
+    public void setBanderas(int banderas) {
+        this.banderas = banderas;
+    }
+    
+    
+
+    public boolean isIsVivo() {
+        return isVivo;
+    }
+
+    public void setIsVivo(boolean isVivo) {
+        this.isVivo = isVivo;
+    }
+    
         
     
     

@@ -56,6 +56,15 @@ public class STOMPMessagestMines {
         Casilla casilla = juego.realizarMovimiento(datos);
         System.out.println("Casilla seleccionada:"+casilla.getEstado());
         msgt.convertAndSend("/topic/casillaSeleccionada"+datos.getIdPartida(),casilla);
+        DatosTablero carga2 = juego.getVidasMinas(datos.getJugador(), datos.getIdPartida());
+        if(carga2.isIsVivo()){
+            msgt.convertAndSend("/topic/vidasMinas"+datos.getIdPartida(),carga2);
+        }
+        else{
+            msgt.convertAndSend("/topic/retirarJugador"+datos.getIdPartida(),carga2);
+        }
+        
+            
     }
     
       

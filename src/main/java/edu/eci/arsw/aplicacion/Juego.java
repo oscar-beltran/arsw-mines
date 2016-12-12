@@ -71,6 +71,8 @@ public class Juego {
         DatosTablero datos = new DatosTablero();
         int vidas = 0;
         int minas = 0;
+        int banderas = 0;
+        boolean isVivo = true;
         for(int i=0;i<partidas.size();i++){
            if(partidas.get(i).getIdPartida().equals(partida)){
                //System.out.println("cargo partida");
@@ -79,15 +81,41 @@ public class Juego {
                for(Jugador j : p.getJugadores()){
                    if(j.getNick().equals(jugador)){
                       vidas = j.getVidas();
+                      if(vidas==0){
+                          eliminaJugador(jugador,partida);
+                          isVivo=false;
+                      }
                    }
                }
-               minas = t.getMinas();
+               minas = p.getMinas();
+               banderas = p.getBanderas();
             } 
         }
         datos.setMinas(minas);
         datos.setVidas(vidas);
+        datos.setBanderas(banderas);
+        datos.setIsVivo(isVivo);
         return datos;
     }
+    
+    /**
+     * Elimina un jugador con cero vidas
+     * @param jugador
+     * @param partida
+     */
+    public  void eliminaJugador(String jugador, String partida){
+       for(int i=0;i<partidas.size();i++){
+           if(partidas.get(i).getIdPartida().equals(partida)){
+               for(Jugador j : partidas.get(i).getJugadores()){
+                   if(j.getNick().equals(jugador)){
+                      partidas.get(i).getJugadores().remove(j);
+                       System.out.println("jugador eliminado");
+                   }
+               }
+            } 
+        } 
+    }
+    
     
     /**
      * Se realizan los movimientos para descubrir una nueva casilla

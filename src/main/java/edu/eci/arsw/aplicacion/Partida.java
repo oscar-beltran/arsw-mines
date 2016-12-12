@@ -62,13 +62,15 @@ public class Partida {
     
     private int calculaNivel(){
         int porcentajeMinas = 1;
+        System.out.println("dificultad:"+nivel);
         if(nivel.equals("Dificil")){
+            System.out.println("minas dificiles");
             porcentajeMinas=3;
         }
         if(nivel.equals("Medio")){
             porcentajeMinas=6;
         }
-        else{
+        if(nivel.equals("Facil")){
             porcentajeMinas=10;
         }
         return porcentajeMinas;
@@ -123,6 +125,11 @@ public class Partida {
                 if(jugadores.get(i).getNick().equals(jugador)){
                     color=jugadores.get(i).getColor();
                     casilla = tablero.getCasilla(color,posX,posY);
+                    if(casilla.getEstado().equals("B")){
+
+                        jugadores.get(i).setVidas(jugadores.get(i).getVidas()-1);
+                        minas=minas-1;
+                    }
                 }
             } 
             return casilla;
