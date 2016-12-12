@@ -316,3 +316,7 @@ div#partida{
     font-size: 18px;
     text-align: center;
 }
+
+#datosFaltantes{
+    color: red;
+}
