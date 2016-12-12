@@ -37,7 +37,7 @@ function connect() {
         partidaId=paramarr[0];
         nick=paramarr[1];
         stompClient.subscribe('/topic/patidaCreada'+partidaId, function (data) {
-            alert("llegue Nuevo");
+            alert("Bienvenido " + nick);
             var newPartida = JSON.parse(data.body);
             tipoPartida=newPartida.tipoPartida;
             document.getElementById("nUsuario").innerHTML =newPartida.jugador;

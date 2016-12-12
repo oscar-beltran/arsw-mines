@@ -105,5 +105,23 @@ public class Juego {
         return verifica;    
     }
     
-    
+    /**
+     * Indica la existencia de una partida en el juego.
+     * 
+     * @param clavePartida
+     * @return true si existe la partida, false de lo contrario
+     */
+    public boolean buscaPartida(String clavePartida){
+        boolean aparece = false;        
+        for(Partida p : partidas){
+            aparece = p.getIdPartida().equals(clavePartida);            
+            if(aparece){
+                if(p.getTipoPartida().equals("Publica")){
+                    aparece = false;
+                }
+                break;
+            }
+        }
+        return aparece;
+    }    
 }

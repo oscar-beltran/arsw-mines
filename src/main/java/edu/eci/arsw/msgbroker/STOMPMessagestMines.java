@@ -51,6 +51,21 @@ public class STOMPMessagestMines {
         System.out.println("datos enviados");
     }
     
+    @MessageMapping("/ValidarCodigo")    
+    public void validarCodigo(DatosCarga datos) throws Exception {        
+        //System.out.println(datos.getJugador());
+        String clave = datos.getIdPartida();
+        if(clave.trim().isEmpty()){
+            msgt.convertAndSend("/topic/mensaje." + datos.getJugador(), "Por favor llene el campo solicitado...");
+        }else{
+            if(juego.buscaPartida(clave)){
+                msgt.convertAndSend("/topic/respuesta." + datos.getJugador(), datos);
+            }else{
+                msgt.convertAndSend("/topic/mensaje." + datos.getJugador(), "La partida con identificación " + clave + " no existe...");
+            }
+        }
+    }
+    
     @MessageMapping("/Casilla")    
     public void descubrirCasilla(DatosSeleccion datos) throws Exception {
         System.out.println("agregando casillas a:"+datos.getIdPartida());
