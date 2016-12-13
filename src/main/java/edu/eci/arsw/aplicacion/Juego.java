@@ -9,6 +9,7 @@ import edu.eci.arsw.msgbroker.Datos;
 import edu.eci.arsw.msgbroker.DatosCarga;
 import edu.eci.arsw.msgbroker.DatosSeleccion;
 import edu.eci.arsw.msgbroker.DatosTablero;
+import java.lang.reflect.Array;
 import java.util.ArrayList;
 import org.springframework.stereotype.Service;
 
@@ -97,6 +98,27 @@ public class Juego {
         datos.setIsVivo(isVivo);
         return datos;
     }
+    
+    /**
+     * Retorna una lista de los jugadores de una partida.
+     * @param idPartida
+     * @return 
+     */
+    public ArrayList<String> listaJugadores(String idPartida){
+        ArrayList<String> jugadores = new ArrayList<>();
+        ArrayList<Jugador> j = new ArrayList<>();
+        for(int i=0;i<partidas.size();i++){
+            if(partidas.get(i).getIdPartida().equals(idPartida)){
+               j = partidas.get(i).getJugadores();
+            }
+        }
+        for(int i=0;i<j.size();i++){
+            jugadores.add(j.get(i).getNick());
+        }
+        return jugadores;    
+    }
+            
+    
     
     /**
      * Elimina un jugador con cero vidas

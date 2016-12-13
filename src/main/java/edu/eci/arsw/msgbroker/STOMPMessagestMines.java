@@ -9,6 +9,7 @@ import edu.eci.arsw.aplicacion.Casilla;
 import edu.eci.arsw.aplicacion.Juego;
 import edu.eci.arsw.aplicacion.Jugador;
 import edu.eci.arsw.aplicacion.Partida;
+import java.util.ArrayList;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.messaging.handler.annotation.DestinationVariable;
 import org.springframework.messaging.handler.annotation.MessageMapping;
@@ -78,14 +79,14 @@ public class STOMPMessagestMines {
     
     @MessageMapping("/Casilla")    
     public void descubrirCasilla(DatosSeleccion datos) throws Exception {
-        System.out.println("agregando casillas a:"+datos.getIdPartida());
         Casilla casilla = juego.realizarMovimiento(datos);
-        System.out.println("Casilla seleccionada:"+casilla.getEstado());
-        msgt.convertAndSend("/topic/casillaSeleccionada"+datos.getIdPartida()+datos.getJugador(),casilla);
+        ArrayList<String> jugadores = juego.listaJugadores(datos.getIdPartida());
+        for(int i=0;i<jugadores.size();i++){
+             msgt.convertAndSend("/topic/casillaSeleccionada"+datos.getIdPartida()+jugadores.get(i),casilla);
+        }
         DatosTablero carga2 = juego.getVidasMinas(datos.getJugador(), datos.getIdPartida());
-        System.out.println(carga2.isIsVivo());
         if(carga2.isIsVivo()){
-            msgt.convertAndSend("/topic/vidasMinas"+datos.getIdPartida()+datos.getJugador(),carga2);
+                msgt.convertAndSend("/topic/vidasMinas"+datos.getIdPartida()+datos.getJugador(),carga2);
         }
         else{
             msgt.convertAndSend("/topic/retirarJugador"+datos.getIdPartida()+datos.getJugador(),carga2);
