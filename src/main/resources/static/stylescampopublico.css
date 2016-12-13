@@ -147,3 +147,7 @@ table tr td{
     -o-transition-duration: 0.5s; /*Opera:Duración de la animació*/
     opacity: 1;
 }
+
+.trselected{
+      background: gray;
+   }

@@ -19,6 +19,7 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
     <head>
         <title>Campos publicos</title>
         <link rel="stylesheet" type="text/css" href="stylescampopublico.css">
+        <script type="text/javascript" src="jquery.tablesorter.js"></script>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <script src="/index.js"></script>
@@ -37,12 +38,12 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
         <section id="partidas">
                 <h2>Lista de partidas</h2>
                <div id="listpublic">
-                   <table>                       
-                       <tr>
+                   <table id="tabla" class="trselected">                       
+                       <tr class="impar">
                            <th style="min-width: 150px;text-align: center">Campo</th>
                            <th style="max-width: 60px;text-align: center">Descripcion</th>
                            <th style="min-width: 60px">
-                               <select name="Modalidad" onchange="this.form.submit()">
+                               <select name="Modalidad">
                                 <option selected value="0"> Modalidad </option>
                                 <option value="1">Normal</option> 
                                 <option value="2">Contrareloj</option> 
@@ -50,7 +51,7 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
                                </select>
                            </th>
                            <th style="min-width: 60px">
-                               <select name="Dificultad" onchange="this.form.submit()">
+                               <select name="Dificultad">
                                 <option selected value="0"> Dificultad </option>
                                 <option value="1">Facil</option> 
                                 <option value="2">Medio</option> 
@@ -58,31 +59,31 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
                                </select>
                            </th>
                        </tr>
-                       <tr>
+                       <tr onclick="myFunction(this)">
                            <td>1</td>
                            <td>The death of the world</td>
                            <td>Normal</td>
                            <td>Medio</td>
                        </tr>
-                       <tr>
+                       <tr  class="impar" onclick="myFunction(this)" >
                            <td>2</td>
                            <td>partida3</td>
                            <td>Contrareloj</td>
                            <td>Dificil</td>
                        </tr>
-                       <tr>
+                       <tr onclick="myFunction(this)">
                            <td>3</td>
                            <td>partida4</td>
                            <td>Normal</td>
                            <td>Medio</td>
                        </tr>
-                       <tr>
+                       <tr  class="impar" onclick="myFunction(this)" >
                            <td>4</td>
                            <td>Partida5</td>
                            <td>Contrareloj</td>
                            <td>Dificil</td>
                        </tr>
-                       <tr>
+                       <tr onclick="myFunction(this)">
                            <td>5</td>
                            <td>Partida5</td>
                            <td>Contrareloj</td>
