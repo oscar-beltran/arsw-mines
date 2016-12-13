@@ -40,23 +40,23 @@ public class STOMPMessagestMines {
      */
     @MessageMapping("/crearJuego")    
     public void crearJuego(Datos datos) throws Exception {
-        System.out.println("Creando partida: "+datos.getIdPartida());
+        //System.out.println("Creando partida: "+datos.getIdPartida());
         datos.setEstado(juego.crearPartida(datos));
-        System.out.println("Creacion de partida:"+datos.getIdPartida()+datos.getJugador());
+        //System.out.println("Creacion de partida:"+datos.getIdPartida()+datos.getJugador());
         msgt.convertAndSend("/topic/patidaCreada"+datos.getIdPartida()+datos.getJugador(),datos);
-        System.out.println("Partida creada  ");
+        //System.out.println("Partida creada  ");
     }
     
     @MessageMapping("/cargarPartida")    
     public void cargarPartida(DatosCarga datos) throws Exception {
         Datos carga = juego.cargarPartida(datos);
         carga.setJugador(datos.getJugador());
-        System.out.println("Enviando datos creacion partida:"+datos.getIdPartida()+datos.getJugador());
+        //System.out.println("Enviando datos creacion partida:"+datos.getIdPartida()+datos.getJugador());
         msgt.convertAndSend("/topic/patidaCreada"+datos.getIdPartida()+datos.getJugador(),carga);
-        System.out.println("datos enviados");
+        //System.out.println("datos enviados");
         DatosTablero carga2 = juego.getVidasMinas(datos.getJugador(), datos.getIdPartida());
         msgt.convertAndSend("/topic/vidasMinas"+datos.getIdPartida()+datos.getJugador(),carga2);
-        System.out.println("datos enviados");
+        //System.out.println("datos enviados");
     }
     
     @MessageMapping("/ValidarCodigo")    
@@ -96,11 +96,14 @@ public class STOMPMessagestMines {
             msgt.convertAndSend("/topic/retirarJugador"+datos.getIdPartida()+datos.getJugador(),carga2);
 
         }
+        for(int i=0;i<jugadores.size();i++){
+             msgt.convertAndSend("/topic/minas"+datos.getIdPartida()+jugadores.get(i),carga2);
+        }
     }
     
     @MessageMapping("/poblarCasillas")    
     public void poblarCasillas(DatosSeleccion datos) throws Exception {
-        System.out.println("Poblando tablero:"+datos.getIdPartida());
+        //System.out.println("Poblando tablero:"+datos.getIdPartida());
         Casilla[][] casillas = juego.consultaCasilla(datos);
         Casilla c = null;
         int filas = juego.consultaDatosPartida(datos,"filas");
@@ -109,7 +112,7 @@ public class STOMPMessagestMines {
             for(int j=0;j<columnas;j++){
                 c=casillas[i][j];
                 if(c.isActiva()){
-                    System.out.println(c.getEstado());
+                    //System.out.println(c.getEstado());
                     msgt.convertAndSend("/topic/casillaSeleccionada"+datos.getIdPartida()+datos.getJugador(),c);   
                 }
             }

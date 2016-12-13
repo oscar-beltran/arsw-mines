@@ -31,7 +31,7 @@ public class Juego {
     public boolean crearPartida(Datos datos){
         Partida partida = datos.getNuevaPartida();
         partida.inicializar();
-        System.out.println(datos.getJugador());
+        //System.out.println(datos.getJugador());
         boolean estado = partida.setJugador(datos.getJugador());
         partida.setNumeroJugadores(partida.getNumeroJugadores()+1);
         boolean add = partidas.add(partida);
@@ -141,7 +141,7 @@ public class Juego {
         } 
        if(jug!= null){
            partidas.get(index).getJugadores().remove(jug);
-           System.out.println("eliminado con exito QQQQQQQQQQQ");
+           //System.out.println("eliminado con exito QQQQQQQQQQQ");
        }
     }
     

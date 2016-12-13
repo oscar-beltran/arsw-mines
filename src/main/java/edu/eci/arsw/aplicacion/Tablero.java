@@ -58,7 +58,7 @@ public class Tablero {
             for(int j=0;j<filas;j++){
                 System.out.print(casillas[i][j].getEstado()+" "); 
             }
-            System.out.println();
+            //System.out.println();
         }    
     }
     

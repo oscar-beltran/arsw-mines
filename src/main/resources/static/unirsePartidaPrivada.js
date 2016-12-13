@@ -31,7 +31,7 @@ function validar(){
     var paramarr = paramstr.split ("&");
     jugador = paramarr[0];
     clave = document.getElementById('codigoUnirse').value;
-    alert(jugador+","+clave);
+    alert("Ingresaste los datos: Jugador-> "+jugador+",Partida: "+clave);
     stompClient.send("/app/ValidarCodigo", {}, JSON.stringify({idPartida:clave, jugador:jugador}));
 }
 

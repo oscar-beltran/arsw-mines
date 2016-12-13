@@ -36,7 +36,7 @@ function connect() {
         var paramarr = paramstr.split ("&");
         partidaId=paramarr[0];
         nick=paramarr[1];
-        alert(partidaId+","+nick);
+        //alert(partidaId+","+nick);
         stompClient.subscribe('/topic/patidaCreada'+partidaId+nick, function (data) {
             alert("Bienvenido " + nick);
             var newPartida = JSON.parse(data.body);
@@ -62,6 +62,12 @@ function connect() {
             //alert("llegue Nuevo");
             var newPartida = JSON.parse(data.body);
             document.getElementById("vidas").innerHTML =newPartida.vidas;
+        });
+        
+        
+        stompClient.subscribe('/topic/minas'+partidaId+nick, function (data) {
+            //alert("llegue Nuevo");
+            var newPartida = JSON.parse(data.body);
             document.getElementById("minas").innerHTML =newPartida.minas;
             document.getElementById("banderas").innerHTML =newPartida.banderas;
         });
