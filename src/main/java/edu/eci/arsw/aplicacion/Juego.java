@@ -177,11 +177,11 @@ public class Juego {
      * @param namePartida
      * @return true si este es agregado, false si no
      */
-    public boolean agregarJugador(String nick,String namePartida){
+    public boolean agregarJugador(String nick,String idPartida){
         boolean agrego = false;
         for(int i=0;i<partidas.size();i++){
-            System.out.println(partidas.get(i).getNombre()+","+namePartida);
-            if(partidas.get(i).getNombre().equals(namePartida)){
+            //System.out.println(partidas.get(i).getNombre()+","+namePartida);
+            if(partidas.get(i).getIdPartida().equals(idPartida)){
               agrego=partidas.get(i).setJugador(nick);
             }
         }

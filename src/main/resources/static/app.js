@@ -36,7 +36,8 @@ function connect() {
         var paramarr = paramstr.split ("&");
         partidaId=paramarr[0];
         nick=paramarr[1];
-        stompClient.subscribe('/topic/patidaCreada'+partidaId, function (data) {
+        alert(partidaId+","+nick);
+        stompClient.subscribe('/topic/patidaCreada'+partidaId+nick, function (data) {
             alert("Bienvenido " + nick);
             var newPartida = JSON.parse(data.body);
             tipoPartida=newPartida.tipoPartida;
@@ -57,7 +58,7 @@ function connect() {
             descubrirTodasCasilla();
         });
         
-         stompClient.subscribe('/topic/vidasMinas'+partidaId, function (data) {
+         stompClient.subscribe('/topic/vidasMinas'+partidaId+nick, function (data) {
             //alert("llegue Nuevo");
             var newPartida = JSON.parse(data.body);
             document.getElementById("vidas").innerHTML =newPartida.vidas;
@@ -65,7 +66,7 @@ function connect() {
             document.getElementById("banderas").innerHTML =newPartida.banderas;
         });
         
-        stompClient.subscribe('/topic/casillaSeleccionada'+partidaId, function (data) {
+        stompClient.subscribe('/topic/casillaSeleccionada'+partidaId+nick, function (data) {
             var casilla = JSON.parse(data.body);
             var estado = casilla.estado;
             var color = casilla.color;
@@ -78,7 +79,7 @@ function connect() {
             //fillText('1','red', gx, gy);
         });
         
-         stompClient.subscribe('/topic/retirarJugador'+partidaId, function (data) {
+         stompClient.subscribe('/topic/retirarJugador'+partidaId+nick, function (data) {
             var retira = JSON.parse(data.body);
             if(!retira.isVivo){
                 alert("Perdiste la partida...");

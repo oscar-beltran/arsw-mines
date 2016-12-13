@@ -9,8 +9,8 @@ function connect(partidaId) {
     stompClient = Stomp.over(socket);
     stompClient.connect({}, function (frame) {
         console.log('Connected: ' + frame);    
-            stompClient.subscribe('/topic/patidaCreada'+partidaId, function (data) {
-                nick=window.location.search.substr(1);
+        nick=window.location.search.substr(1);
+            stompClient.subscribe('/topic/patidaCreada'+partidaId+nick, function (data) {
                 window.location.replace("/partida.html"+"?"+idPartida+"&"+nick);
         });
     });

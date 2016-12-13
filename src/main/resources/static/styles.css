@@ -33,7 +33,9 @@ body{
 #titulo{
     text-align: center;
     text-indent: -225px;
+
 }
+
 
 #cuerpo{
     text-align: center;
@@ -235,8 +237,15 @@ body{
     margin-top: -46px;
     margin-bottom: -48px;
     float: left;
+    -webkit-transform: scale(1);
+    -moz-transform: scale(1);
+    -o-transform: scale(1);
+    -webkit-transition-duration: 0.5s;
+    -moz-transition-duration: 0.5s;
     
 }
+
+
 nav {
     display: block;
     background-color: #8ff6ff;

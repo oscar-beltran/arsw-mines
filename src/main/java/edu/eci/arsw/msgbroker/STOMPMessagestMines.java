@@ -37,27 +37,39 @@ public class STOMPMessagestMines {
     public void crearJuego(Datos datos) throws Exception {
         System.out.println("Creando partida: "+datos.getIdPartida());
         datos.setEstado(juego.crearPartida(datos));
-        msgt.convertAndSend("/topic/patidaCreada"+datos.getIdPartida(),datos);
+        System.out.println("Creacion de partida:"+datos.getIdPartida()+datos.getJugador());
+        msgt.convertAndSend("/topic/patidaCreada"+datos.getIdPartida()+datos.getJugador(),datos);
+        System.out.println("Partida creada  ");
     }
     
     @MessageMapping("/cargarPartida")    
     public void cargarPartida(DatosCarga datos) throws Exception {
         Datos carga = juego.cargarPartida(datos);
         carga.setJugador(datos.getJugador());
-        msgt.convertAndSend("/topic/patidaCreada"+datos.getIdPartida(),carga);
+        System.out.println("Enviando datos creacion partida:"+datos.getIdPartida()+datos.getJugador());
+        msgt.convertAndSend("/topic/patidaCreada"+datos.getIdPartida()+datos.getJugador(),carga);
+        System.out.println("datos enviados");
         DatosTablero carga2 = juego.getVidasMinas(datos.getJugador(), datos.getIdPartida());
-        msgt.convertAndSend("/topic/vidasMinas"+datos.getIdPartida(),carga2);
+        msgt.convertAndSend("/topic/vidasMinas"+datos.getIdPartida()+datos.getJugador(),carga2);
         System.out.println("datos enviados");
     }
     
     @MessageMapping("/ValidarCodigo")    
     public void validarCodigo(DatosCarga datos) throws Exception {
+        //System.out.println("validando");
         String clave = datos.getIdPartida();
         if(clave.trim().isEmpty()){
             msgt.convertAndSend("/topic/mensaje." + datos.getJugador(), "Por favor llene el campo solicitado...");
         }else{
             if(juego.buscaPartida(clave)){
-                msgt.convertAndSend("/topic/respuesta." + datos.getJugador(), datos);
+                boolean paso = juego.agregarJugador(datos.getJugador(), datos.getIdPartida());
+                //System.out.println("jugador agregado, enviando creacion partida");
+                if(paso){
+                    msgt.convertAndSend("/topic/respuesta." + datos.getJugador(), datos);
+                }
+                else{
+                   msgt.convertAndSend("/topic/mensaje." + datos.getJugador(), "El numero de jugadores ha alcanzado su maximo..."); 
+                }
             }else{
                 msgt.convertAndSend("/topic/mensaje." + datos.getJugador(), "La partida con identificación " + clave + " no existe...");
             }
@@ -69,14 +81,14 @@ public class STOMPMessagestMines {
         System.out.println("agregando casillas a:"+datos.getIdPartida());
         Casilla casilla = juego.realizarMovimiento(datos);
         System.out.println("Casilla seleccionada:"+casilla.getEstado());
-        msgt.convertAndSend("/topic/casillaSeleccionada"+datos.getIdPartida(),casilla);
+        msgt.convertAndSend("/topic/casillaSeleccionada"+datos.getIdPartida()+datos.getJugador(),casilla);
         DatosTablero carga2 = juego.getVidasMinas(datos.getJugador(), datos.getIdPartida());
         System.out.println(carga2.isIsVivo());
         if(carga2.isIsVivo()){
-            msgt.convertAndSend("/topic/vidasMinas"+datos.getIdPartida(),carga2);
+            msgt.convertAndSend("/topic/vidasMinas"+datos.getIdPartida()+datos.getJugador(),carga2);
         }
         else{
-            msgt.convertAndSend("/topic/retirarJugador"+datos.getIdPartida(),carga2);
+            msgt.convertAndSend("/topic/retirarJugador"+datos.getIdPartida()+datos.getJugador(),carga2);
 
         }
     }
@@ -93,7 +105,7 @@ public class STOMPMessagestMines {
                 c=casillas[i][j];
                 if(c.isActiva()){
                     System.out.println(c.getEstado());
-                    msgt.convertAndSend("/topic/casillaSeleccionada"+datos.getIdPartida(),c);   
+                    msgt.convertAndSend("/topic/casillaSeleccionada"+datos.getIdPartida()+datos.getJugador(),c);   
                 }
             }
         }

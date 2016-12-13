@@ -14,7 +14,7 @@ function connect() {
             stompClient.subscribe('/topic/respuesta.' + jugador, function (data) {                
                 var obj = JSON.parse(data.body);                
                 window.location.replace("/partida.html"+"?"+obj.idPartida+"&"+obj.jugador);
-                disconnect();
+                //disconnect();
             });
     });    
 }
@@ -31,6 +31,7 @@ function validar(){
     var paramarr = paramstr.split ("&");
     jugador = paramarr[0];
     clave = document.getElementById('codigoUnirse').value;
+    alert(jugador+","+clave);
     stompClient.send("/app/ValidarCodigo", {}, JSON.stringify({idPartida:clave, jugador:jugador}));
 }
 
