@@ -26,6 +26,7 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
         <script src="/webjars/sockjs-client/sockjs.min.js"></script>
         <script src="/webjars/stomp-websocket/stomp.min.js"></script>
         <script src="/app.js"></script>
+        <script src="/index.js"></script>
         <script src="/unirsePartidaPrivada.js"></script>
     </head>
     <body>
@@ -34,7 +35,7 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
             <h1 id="titulo" >JUNTOS CONTRA LAS MINAS</h1>
 	</header>
         
-        <img id="caraUser" src="/imagenes/sinCara.png" name="imagen"/>
+        <img onload="cargaImagenUser()" id="caraUser" src="/imagenes/sinCara.png" name="imagen"/>
         
        <div id="filaButton">
            <button id="indexButton" onclick="salirPartida()">Regresar</button>

@@ -1,5 +1,6 @@
 
 
+
 /* global Location */
 
 function descrearCampo() {
@@ -43,6 +44,10 @@ function validarNickname(){
         return false;
     }
 }
+
+function cargaImagenUser(){
+    document.getElementById('caraUser').src = localStorage.getItem("Imagen");
+}
  
 $(document).ready(function(){
 	$("img[name=imagen]").click(function () {
@@ -54,20 +59,20 @@ $(document).ready(function(){
             localStorage.setItem("Imagen", "/imagenes/cara2.png");
 	});
         $("img[name=imagen2]").click(function () {
-            document.getElementById('caraUser').src = "/imagenes/cara3.jpg";
-            localStorage.setItem("Imagen", "/imagenes/cara3.jpg");
+            document.getElementById('caraUser').src = "/imagenes/cara3.png";
+            localStorage.setItem("Imagen", "/imagenes/cara3.png");
 	});
         $("img[name=imagen3]").click(function () {
             document.getElementById('caraUser').src = "/imagenes/cara4.png";
             localStorage.setItem("Imagen", "/imagenes/cara4.png");
 	});
         $("img[name=imagen4]").click(function () {
-            document.getElementById('caraUser').src = "/imagenes/cara5.jpg";
-            localStorage.setItem("Imagen", "/imagenes/cara5.jpg");
+            document.getElementById('caraUser').src = "/imagenes/cara5.png";
+            localStorage.setItem("Imagen", "/imagenes/cara5.png");
 	});
         $("img[name=imagen5]").click(function () {
-            document.getElementById('caraUser').src = "/imagenes/cara6.jpg";
-            localStorage.setItem("Imagen", "/imagenes/cara6.jpg");
+            document.getElementById('caraUser').src = "/imagenes/cara6.png";
+            localStorage.setItem("Imagen", "/imagenes/cara6.png");
 	});
         
 });
@@ -77,5 +82,5 @@ $(document).ready(iniciar)(
                 $("tabla tr td").click(clickTabla);
             }
         );
- 
+
 
