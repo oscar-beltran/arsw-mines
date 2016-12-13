@@ -54,7 +54,7 @@ public class Partida {
     public void inicializar(){
         int numCasillas = filas * columnas;
         minas = (int) numCasillas/calculaNivel();
-        System.out.println(minas);
+        //System.out.println(minas);
         banderas = minas;
         llenarColores();
         poblartablero();
@@ -62,9 +62,9 @@ public class Partida {
     
     private int calculaNivel(){
         int porcentajeMinas = 1;
-        System.out.println("dificultad:"+nivel);
+        //System.out.println("dificultad:"+nivel);
         if(nivel.equals("Dificil")){
-            System.out.println("minas dificiles");
+            //System.out.println("minas dificiles");
             porcentajeMinas=3;
         }
         if(nivel.equals("Medio")){
@@ -102,7 +102,7 @@ public class Partida {
             jugadores.add(jugador);
             agrega = true;
             numeroJugadores=numeroJugadores+1;
-            System.out.println("Jugador :"+jugador.getNick()+" Agregado, Color:"+jugador.getColor());
+            //System.out.println("Jugador :"+jugador.getNick()+" Agregado, Color:"+jugador.getColor());
         }
         return agrega;
     }
@@ -127,7 +127,7 @@ public class Partida {
                     color=jugadores.get(i).getColor();
                     boolean estado = tablero.isCasilla(color, posX, posY);
                     casilla = tablero.getCasilla(color,posX,posY);
-                    System.out.println("la casilla esta activa:"+estado);
+                    //System.out.println("la casilla esta activa:"+estado);
                     if(casilla.getEstado().equals("B") && !estado){
                         jugadores.get(i).setVidas(jugadores.get(i).getVidas()-1);
                         minas=minas-1;
