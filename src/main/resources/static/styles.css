@@ -268,6 +268,9 @@ canvas {
   border:1px dashed black;
   position: relative;
   background: #1f7c2c;
+  position: relative;
+  top: -5em;
+}
 }
 
 div#partida{
@@ -372,4 +375,13 @@ div#partida{
 
 #lineaInfo{
     text-align: center;
+    position: relative;
+    top: -3em;
+}
+
+
+#lineaInfo2{
+    text-align: center;
+    position: relative;
+    top: -3em;
 }
