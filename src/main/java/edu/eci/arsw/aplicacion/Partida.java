@@ -97,7 +97,7 @@ public class Partida {
      */
     public boolean setJugador(String nick){
         boolean agrega = false;
-        if(numeroJugadores+1<maxJugadores){
+        if(numeroJugadores<maxJugadores){
             Jugador jugador = new Jugador(nick,colores.get(jugadores.size()));
             jugadores.add(jugador);
             agrega = true;
