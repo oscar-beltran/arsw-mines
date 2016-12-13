@@ -38,52 +38,52 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
         <section id="partidas">
                 <h2>Lista de partidas</h2>
                <div id="listpublic">
-                   <table id="tabla" class="trselected">                       
+                   <table id="tabla" class="trselected"> 
                        <tr class="impar">
                            <th style="min-width: 150px;text-align: center">Campo</th>
                            <th style="max-width: 60px;text-align: center">Descripcion</th>
                            <th style="min-width: 60px">
-                               <select name="Modalidad">
+                               <select name="Modalidad" onChange="mostrar(this.value);">
                                 <option selected value="0"> Modalidad </option>
-                                <option value="1">Normal</option> 
-                                <option value="2">Contrareloj</option> 
-                                <option value="3">Equipos</option> 
+                                <option value="normal">Normal</option> 
+                                <option value="contrareloj">Contrareloj</option> 
+                                <option value="todos">Todos</option> 
                                </select>
                            </th>
                            <th style="min-width: 60px">
                                <select name="Dificultad">
                                 <option selected value="0"> Dificultad </option>
-                                <option value="1">Facil</option> 
-                                <option value="2">Medio</option> 
-                                <option value="3">Dificil</option> 
+                                <option value="facil">Facil</option> 
+                                <option value="medio">Medio</option> 
+                                <option value="dificil">Dificil</option> 
                                </select>
                            </th>
                        </tr>
-                       <tr onclick="myFunction(this)">
+                       <tr id="Partida1" onclick="myFunction(this)">
                            <td>1</td>
                            <td>The death of the world</td>
                            <td>Normal</td>
                            <td>Medio</td>
                        </tr>
-                       <tr  class="impar" onclick="myFunction(this)" >
+                       <tr id="Partida2" class="impar" onclick="myFunction(this)" >
                            <td>2</td>
-                           <td>partida3</td>
+                           <td>partida2</td>
                            <td>Contrareloj</td>
                            <td>Dificil</td>
                        </tr>
-                       <tr onclick="myFunction(this)">
+                       <tr id="Partida3" onclick="myFunction(this)">
                            <td>3</td>
-                           <td>partida4</td>
+                           <td>partida3</td>
                            <td>Normal</td>
                            <td>Medio</td>
                        </tr>
-                       <tr  class="impar" onclick="myFunction(this)" >
+                       <tr  id="Partida4" class="impar" onclick="myFunction(this)" >
                            <td>4</td>
-                           <td>Partida5</td>
+                           <td>Partida4</td>
                            <td>Contrareloj</td>
                            <td>Dificil</td>
                        </tr>
-                       <tr onclick="myFunction(this)">
+                       <tr id="Partida5" onclick="myFunction(this)">
                            <td>5</td>
                            <td>Partida5</td>
                            <td>Contrareloj</td>

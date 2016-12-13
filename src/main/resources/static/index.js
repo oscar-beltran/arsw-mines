@@ -127,4 +127,35 @@ if (window.document.addEventListener) {
    window.document.attachEvent("onkeydown", myFunction2);
 }
 
-
+function mostrar(id){
+    //alert(boolean+" "+id+" normal");
+     if (id==="normal") {
+        fila = document.getElementById("Partida2");
+        fila.style.display = "none"; //ocultar fila
+        fila = document.getElementById("Partida4");
+        fila.style.display = "none"; //ocultar fila
+        fila = document.getElementById("Partida5");
+        fila.style.display = "none"; //ocultar fila
+    }
+    
+    if (id === "contrareloj") {
+        fila = document.getElementById("Partida1");
+        fila.style.display = "none"; //ocultar fila
+        fila = document.getElementById("Partida3");
+        fila.style.display = "none"; //ocultar fila
+    }
+    if (id === "todos") {
+        //alert("entro");
+        for (var i = 1, max = 5; i < max; i++) {
+            fila = document.getElementById("Partida"+i);
+            fila.style.display = ""; //mostrar fila 
+        }
+    }
+/*
+    if (id == "paro") {
+        $("#estudiante").hide();
+        $("#trabajador").hide();
+        $("#autonomo").hide();
+        $("#paro").show();
+    }*/
+}
