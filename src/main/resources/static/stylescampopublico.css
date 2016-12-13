@@ -19,6 +19,8 @@ section {
     margin: 10px auto;
     height: 500px;
     width: 600px;
+    osition: relative;
+    top: -6em;
 }
 
 footer {
@@ -94,6 +96,8 @@ table th{
     background: #ff152a;
     color: #ffffff;
     font-size: 20px;
+    position: relative;
+    top: -3em;
 }
 
 #partidas{
@@ -116,4 +120,30 @@ table th{
 table tr td{
     font-size: 15px;
     font-family: cursive;
+}
+
+#caraUser{
+    width: 60px;
+    height: 61px;
+    border-radius: 900px;
+    -webkit-transform: scale(1);
+    -moz-transform: scale(1);
+    -o-transform: scale(1);
+    -webkit-transition-duration: 0.5s;
+    -moz-transition-duration: 0.5s;
+    -o-transition-duration: 0.5s;
+    opacity: 0.5;
+    position: relative;
+    top: -6em;
+    left: 91%;
+}
+
+#caraUser:hover{
+    -webkit-transform:scale(2); /*Webkit:Modificamos tamaño a escala*/
+    -moz-transform:scale(2); /*Mozilla:Modificamos tamaño a escala*/
+    -o-transform:scale(2); /*Opera:Modificamos tamaño a escala*/
+    -webkit-transition-duration: 0.5s; /*Webkit:Duración de la animación*/
+    -moz-transition-duration: 0.5s; /*Mozilla:Duración de la animació*/
+    -o-transition-duration: 0.5s; /*Opera:Duración de la animació*/
+    opacity: 1;
 }

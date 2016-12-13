@@ -3,6 +3,33 @@ body{
     background-image: url(/imagenes/fondo1.jpg);
     background-size: cover;
 }
+
+#caraUser{
+    width: 60px;
+    height: 61px;
+    border-radius: 900px;
+    -webkit-transform: scale(1);
+    -moz-transform: scale(1);
+    -o-transform: scale(1);
+    -webkit-transition-duration: 0.5s;
+    -moz-transition-duration: 0.5s;
+    -o-transition-duration: 0.5s;
+    opacity: 0.5;
+    position: relative;
+    top: -6em;
+    left: 91%;
+}
+
+#caraUser:hover{
+    -webkit-transform:scale(2); /*Webkit:Modificamos tamaño a escala*/
+    -moz-transform:scale(2); /*Mozilla:Modificamos tamaño a escala*/
+    -o-transform:scale(2); /*Opera:Modificamos tamaño a escala*/
+    -webkit-transition-duration: 0.5s; /*Webkit:Duración de la animación*/
+    -moz-transition-duration: 0.5s; /*Mozilla:Duración de la animació*/
+    -o-transition-duration: 0.5s; /*Opera:Duración de la animació*/
+    opacity: 1;
+}
+
 #titulo{
     text-align: center;
     text-indent: -225px;
@@ -14,6 +41,8 @@ body{
     border-radius: 5px;
     background: #586467;
     padding: 10px 0 40px 0;
+    position: relative;
+    top: -4em;
 }
 
 #tituloIndex{
@@ -154,6 +183,8 @@ body{
     text-align: center;
     background: #586467;
     border-radius: 5px;
+    position: relative;
+    top: -4em;
 }
 
 #parrafoUnirsePartida{
@@ -254,6 +285,8 @@ div#partida{
     text-align: left;
     margin: 0 auto;
     border-radius: 10px;
+    position: relative;
+    top: -4em
 }
 
 .centrar{
@@ -309,6 +342,8 @@ div#partida{
     background: #ff152a;
     color: #ffffff;
     font-size: 20px;
+    position: relative;
+    top: -3em;
 }
 
 #numer{
