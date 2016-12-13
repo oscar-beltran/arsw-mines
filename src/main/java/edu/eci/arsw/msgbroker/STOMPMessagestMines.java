@@ -9,6 +9,7 @@ import edu.eci.arsw.aplicacion.Casilla;
 import edu.eci.arsw.aplicacion.Juego;
 import edu.eci.arsw.aplicacion.Jugador;
 import edu.eci.arsw.aplicacion.Partida;
+import edu.eci.arsw.persistence.REDISPersistence;
 import java.util.ArrayList;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.messaging.handler.annotation.DestinationVariable;
@@ -28,6 +29,9 @@ public class STOMPMessagestMines {
     Juego juego;
     @Autowired
     SimpMessagingTemplate msgt;
+    
+    private REDISPersistence redis;
+            
     
     /**
      * Se crea un juego nuevo publico, se recibe una partida
